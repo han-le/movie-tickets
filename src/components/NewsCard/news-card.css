@@ -1,0 +1,89 @@
+
+.news__card {
+    margin-bottom: 50px;
+}
+
+.news__card .news__wrapper {
+    background-color: #fff;
+    min-height: 540px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.2);
+}
+.news__card .news__wrapper:hover .data {
+    transform: translateY(0);
+}
+.news__card .data {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transform: translateY(calc(70px + 1em));
+    transition: transform 0.3s;
+}
+.news__card .data .content {
+    padding: 1em;
+    position: relative;
+    z-index: 1;
+}
+
+.news__card .title {
+    margin-top: 10px;
+}
+.news__card .text {
+    height: 70px;
+    margin: 0;
+}
+.news__card input[type=checkbox] {
+    display: none;
+}
+.news__card input[type=checkbox]:checked + .menu-content {
+    transform: translateY(-60px);
+}
+
+.news__card .news__header {
+    color: #fff;
+    padding: 1em;
+}
+.news__card .news__header::before, .example-2 .news__header::after {
+    content: "";
+    display: table;
+}
+.news__card .news__header::after {
+    clear: both;
+}
+.news__card .news__header .date {
+    float: left;
+    font-size: 12px;
+}
+
+.news__card .data {
+    color: #fff;
+    transform: translateY(calc(70px + 4em));
+}
+.news__card .title a {
+    color: #fff;
+}
+.news__card .button {
+    display: block;
+    width: 100px;
+    margin: 2em auto 1em;
+    text-align: center;
+    font-size: 12px;
+    color: #fff;
+    line-height: 1;
+    position: relative;
+    font-weight: 700;
+}
+.news__card .button::after {
+    content: "→";
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    transition: all 0.3s;
+}
+.news__card .button:hover::after {
+    transform: translate(5px, -50%);
+    opacity: 1;
+}
