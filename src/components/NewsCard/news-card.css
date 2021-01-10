@@ -20,14 +20,24 @@
     transform: translateY(calc(70px + 1em));
     transition: transform 0.3s;
 }
+
 .news__card .data .content {
     padding: 1em;
     position: relative;
     z-index: 1;
 }
 
+.news__card .data .content a {
+    text-decoration: none;
+}
+
 .news__card .title {
-    margin-top: 10px;
+    margin: 10px 0 19px 0;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: 0;
+    text-transform: none;
 }
 .news__card .text {
     height: 70px;
@@ -48,6 +58,7 @@
 }
 .news__card .title a {
     color: #fff;
+    text-decoration: none;
 }
 .news__card .button {
     display: block;
