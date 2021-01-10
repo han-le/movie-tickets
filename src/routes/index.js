@@ -3,8 +3,15 @@ import MovieBookingDetails from "../containers/GuestLayout/MovieBookingDetails/M
 import BookingPage from "../containers/GuestLayout/BookingPage";
 import AuthPage from "../containers/AuthPage";
 import UserPage from "../containers/GuestLayout/UserPage";
+import DashBoard from "../containers/AdminLayout/DashBoard"
 
-const routesAdmin = [];
+const routesAdmin = [
+  {
+    exact: false,
+    path: "/dashboard",
+    component: DashBoard,
+  }
+];
 
 const routesGuest = [
   {
