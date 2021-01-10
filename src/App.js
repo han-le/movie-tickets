@@ -4,6 +4,7 @@ import { routesGuest, routesUser, routesAdmin, routesLogin } from "./routes";
 import GuestLayout from "./containers/GuestLayout";
 import PageNotFound from "./containers/PageNotFound";
 import AuthPage from "./containers/AuthPage";
+import 'antd/dist/antd.css';
 
 function App() {
   const showLayoutGuest = (routes) => {

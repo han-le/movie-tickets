@@ -473,3 +473,9 @@ img {
   font-weight: 500;
   color: #108f3e;
 }
+
+.showTime__content .flex-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
