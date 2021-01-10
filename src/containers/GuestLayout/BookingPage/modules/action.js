@@ -13,3 +13,17 @@ export const actAddGheFailed =(soGhe)=>{
         soGhe,
     }
 }
+
+// let subArr =[]
+// arr = [[],[],[],[]]
+// let Arr = array [160 object].map(object,index) => {
+//     if (index *10 === 0) {
+//         subArr = []
+//         subArr = []
+//     }
+// }
+
+
+// return (
+//     arr.map(asdas)
+// )
