@@ -25,7 +25,7 @@ export default class NavbarGuest extends Component {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Hi, {localStorage.getItem("UserName")}
+            Hi, {localStorage.getItem("UserName").replace(/[^\w\s]/gi, "")}
           </button>
 
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">

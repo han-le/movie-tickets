@@ -19,9 +19,11 @@ export const actLoginApi = (user, history) => {
           //Lưu trạng thái login
           localStorage.setItem("UserAdmin", JSON.stringify(result.data));
           //Chuyển đến trang dashboard
-          alert("ADMIN nè");
-          localStorage.removeItem("User");
-          localStorage.removeItem("UserName");
+          localStorage.setItem(
+            "User",
+            JSON.stringify(result.data.maLoaiNguoiDung)
+          );
+          localStorage.setItem("UserName", JSON.stringify(result.data.hoTen));
           history.push("/");
         } else if (result.data.maLoaiNguoiDung === "KhachHang") {
           localStorage.setItem(
