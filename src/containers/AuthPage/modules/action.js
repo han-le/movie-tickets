@@ -24,7 +24,7 @@ export const actLoginApi = (user, history) => {
             JSON.stringify(result.data.maLoaiNguoiDung)
           );
           localStorage.setItem("UserName", JSON.stringify(result.data.hoTen));
-          history.push("/");
+          history.push("/dashboard");
         } else if (result.data.maLoaiNguoiDung === "KhachHang") {
           localStorage.setItem(
             "User",

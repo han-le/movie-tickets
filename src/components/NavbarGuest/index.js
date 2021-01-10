@@ -31,13 +31,13 @@ export default class NavbarGuest extends Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <Link to={"/login"}>
               <a className="dropdown-item" href="#">
-                Profile 1231231
+                Profile
               </a>
             </Link>
 
             <Link to={"/"}>
               <a className="dropdown-item" href="#" onClick={this.handleLogOut}>
-                Log Out 11
+                Log Out
               </a>
             </Link>
           </div>
