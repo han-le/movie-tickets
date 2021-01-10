@@ -31,7 +31,7 @@ export default class NavbarGuest extends Component {
           <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <Link to={"/login"}>
               <a className="dropdown-item" href="#">
-                Profile
+                Profile 1231231
               </a>
             </Link>
 
