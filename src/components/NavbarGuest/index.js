@@ -37,7 +37,7 @@ export default class NavbarGuest extends Component {
 
             <Link to={"/"}>
               <a className="dropdown-item" href="#" onClick={this.handleLogOut}>
-                Log Out
+                Log Out 11
               </a>
             </Link>
           </div>
