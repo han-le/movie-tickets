@@ -90,7 +90,7 @@ export default class NavbarGuest extends Component {
                 >
                   <i class="fas fa-location-arrow mr-2"></i>
                   <a href />
-                  Hồ Chí Minh
+                  Hồ Chí Minh 1
                 </button>
                 <div
                   className="dropdown-menu"
