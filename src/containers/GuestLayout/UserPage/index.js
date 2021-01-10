@@ -1,7 +1,11 @@
+//Sign Up page for guests
+
 import React, { Component } from "react";
 import { actAddUserApi } from "./modules/action";
 import { connect } from "react-redux";
 import Loader from "../../../components/Loader";
+import "./sign-up-page.css";
+import {Link} from "react-router-dom";
 
 class UserPage extends Component {
   constructor(props) {
@@ -44,71 +48,52 @@ class UserPage extends Component {
     const { loading } = this.props;
     if (loading) return <Loader />;
     return (
-      <form className="container" onSubmit={this.handleSubmit}>
-        <h3>Thêm người dùng</h3>
-        {this.renderNoti()}
-        <div className="form-group">
-          <span>Tài khoản</span>
-          <input
-            className="form-control"
-            name="taiKhoan"
-            onChange={this.handleOnChange}
-          />
+        <div className="main_form_body">
+          <div className="form__wrapper sign-up">
+            <div className="form__container">
+              {/* Form body */}
+              <div className="form__body-wrapper ">
+                <form className="form__content" onSubmit={this.handleSubmit}>
+                  <span className="form__title">Sign Up</span>
+                  <div className="wrap__input">
+                    <input className="input" type="text" name="hoTen" placeholder="Full Name"
+                           onChange={this.handleOnChange} />
+                  </div>
+                  <div className="wrap__input">
+                    <input className="input" type="text" name="taiKhoan" placeholder="Username"
+                           onChange={this.handleOnChange} />
+                  </div>
+                  <div className="wrap__input">
+                    <input className="input" type="password" name="matKhau" placeholder="Password"
+                           onChange={this.handleOnChange} />
+                  </div>
+                  <div className="wrap__input">
+                    <input className="input" type="password" name="matKhau" placeholder="Confirm Password"
+                           onChange={this.handleOnChange} />
+                  </div>
+
+                  <div className="wrap__input">
+                    <input className="input" type="email" name="email" placeholder="Email"
+                           onChange={this.handleOnChange} />
+                  </div>
+                  <div className="wrap__input">
+                    <input className="input" type="text" name="soDt" placeholder="Phone number"
+                           onChange={this.handleOnChange} />
+                  </div>
+                  <div className="form__button-container">
+                    <div className="form__button-wrap">
+                      <div className="form__button-bg"/>
+                      <button className="form__button-btn" type="submit">Join</button>
+                    </div>
+                  </div>
+                  <div className="form__button-sign-in">
+                    <Link to={"/"}>Do this later</Link>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="form-group">
-          <span>Mật khẩu</span>
-          <input
-            className="form-control"
-            name="matKhau"
-            onChange={this.handleOnChange}
-          />
-        </div>
-        <div className="form-group">
-          <span>Họ tên</span>
-          <input
-            className="form-control"
-            name="hoTen"
-            onChange={this.handleOnChange}
-          />
-        </div>
-        <div className="form-group">
-          <span>Email</span>
-          <input
-            className="form-control"
-            name="email"
-            onChange={this.handleOnChange}
-          />
-        </div>
-        <div className="form-group">
-          <span>Số điện thoại</span>
-          <input
-            className="form-control"
-            name="soDt"
-            onChange={this.handleOnChange}
-          />
-        </div>
-        <div className="form-group">
-          <span>Mã nhóm</span>
-          <input
-            className="form-control"
-            name="maNhom"
-            onChange={this.handleOnChange}
-          />
-        </div>
-        <div className="form-group">
-          <span>Mã loại người dùng</span>
-          <input
-            className="form-control"
-            name="maLoaiNguoiDung"
-            onChange={this.handleOnChange}
-          />
-        </div>
-        <div className="form-group">
-          <button type="submit" className="btn btn-success">
-            Thêm người dùng
-          </button>
-        </div>
-      </form>
     );
   }
 }
