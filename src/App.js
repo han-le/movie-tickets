@@ -6,6 +6,7 @@ import PageNotFound from "./containers/PageNotFound";
 
 import AuthPage from "./containers/AuthPage";
 import "antd/dist/antd.css";
+import AdminLayout from "./containers/AdminLayout";
 
 
 function App() {
