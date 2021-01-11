@@ -3,7 +3,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { routesGuest, routesUser, routesAdmin, routesLogin } from "./routes";
 import GuestLayout from "./containers/GuestLayout";
 import PageNotFound from "./containers/PageNotFound";
-import AdminLayout from "./containers/AdminLayout";
+
+import AuthPage from "./containers/AuthPage";
+import "antd/dist/antd.css";
+
 
 function App() {
   const showLayoutGuest = (routes) => {
@@ -45,7 +48,7 @@ function App() {
             key={index}
             exact={item.exact}
             path={item.path}
-            render={(propsComponent) => <item.component {...propsComponent}/>}
+            render={(propsComponent) => <item.component {...propsComponent} />}
           />
         );
       });

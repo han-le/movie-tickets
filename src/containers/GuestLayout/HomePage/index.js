@@ -10,6 +10,8 @@ import MovieCard from "../../../components/MovieCard";
 import {connect} from "react-redux";
 import News from "../../../components/News/news";
 
+import ShowTime from './components/ShowTime'
+
 
 
 class HomePage extends Component {
@@ -112,7 +114,8 @@ class HomePage extends Component {
                 {/* ========== 5- /Genres  ========== */}
 
                 {/* ========== 6- Showtime  ========== */}
-                <div className="showTime-title">
+                <ShowTime/>
+                {/* <div className="showTime-title">
                     <div className="container section">
                         <img className="section__icon" src="https://www.flaticon.com/svg/static/icons/svg/599/599887.svg" alt="trending-icon"/>
                         <h3 className="section__title">Today we have</h3>
@@ -511,6 +514,7 @@ class HomePage extends Component {
                         </div>
                     </div>
                 </section>
+                 */}
                 {/* ========== /6- Showtime  ========== */}
 
 

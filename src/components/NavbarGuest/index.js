@@ -11,130 +11,71 @@ export default class NavbarGuest extends Component {
     if (localStorage.getItem("UserName") === null) {
       return (
         <Link to={"/login"}>
-          <div className="nav-link text-light btn btn-danger">Login</div>
+          <div className="btn btn-danger mr-2">Login</div>
         </Link>
       );
     } else {
       return (
-        <div className="dropdown address mt-1">
-          <button
-            className="btn btn-secondary dropdown-toggle bg-white text-dark address__drop"
-            type="button"
-            id="dropdownMenuButton"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            Hi, {localStorage.getItem("UserName").replace(/[^\w\s]/gi, "")}
-          </button>
-
-          <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <Link to={"/login"}>
-              <a className="dropdown-item" href="#">
-                Profile
+          <li className="nav-item dropdown">
+              <a className="nav-link dropdown-toggle waves-effect waves-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i className="fas fa-user-alt mr-2" />
+                  {localStorage.getItem("UserName").replace(/[^\w\s]/gi, "")}
               </a>
-            </Link>
+              <div className="dropdown-menu dropdown-menu-right dropdown-info">
+                  <Link to={"/profile"} className="dropdown-item">
+                      Profile
+                  </Link>
 
-            <Link to={"/"}>
-              <a className="dropdown-item" href="#" onClick={this.handleLogOut}>
-                Log Out
-              </a>
-            </Link>
-          </div>
-        </div>
+                  <Link to={"/"} className="dropdown-item" onClick={this.handleLogOut}>
+                      Sign out
+                  </Link>
+              </div>
+          </li>
+
       );
     }
   };
 
   render() {
     return (
-      <div className="header__nav">
-        <div className="header__content container-fluid">
-          <nav className="navbar navbar-expand-lg row">
-            <Link className="navbar-brand col-sm-4" to={"/"}>
-              <img
-                className="webLogo ml-2"
-                src="/img/logo-aurora.png"
-                alt="webLogo"
-              />
-            </Link>
+        <div className="navbar__section">
+            <nav className="navbar navbar-expand-lg navbar-light" id="home__navbar">
 
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-            <div
-              className="collapse navbar-collapse col-sm-4"
-              id="navbarSupportedContent"
-            >
-              <h1 className="brand-name">Aurora Ticket</h1>
-            </div>
-            <div className="col-sm-4 navbar-right">
-              <div className="log-in mr-4">{this.renderUserName()}</div>
+                {/* Brand logo */}
+                <Link to={"/"} className="navbar-brand" >
+                    <img src="/img/logo-aurora.png" width={45} height={30} className="d-inline-block align-top" alt={"logo"} />
+                    <span className="brand-name">Aurora Ticket</span>
+                </Link>
 
-              <div className="dropdown address mt-1">
-                <button
-                  className="btn btn-secondary dropdown-toggle bg-white text-dark address__drop"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="fas fa-location-arrow mr-2"></i>
-                  <a href />
-                  Hồ Chí Minh 
+
+
+                {/* Hamburger: to open navbar content */}
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon" />
+
                 </button>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton"
-                >
-                  <a className="dropdown-item" href="#">
-                    Hồ Chí Minh
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Hà Nội
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Đà Nẵng
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Hải Phòng
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Biên Hòa
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Nha Trang
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Bình Dương
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Phan Thiết
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Hạ Long
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Cần Thơ
-                  </a>
-                  <a className="dropdown-item" href="#">
-                    Vũng Tàu
-                  </a>
+
+                {/* Navbar content */}
+                <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul className="navbar-nav ml-auto" id="nav__menu">
+                        {this.renderUserName()}
+                        <li className="nav-item dropdown" >
+                            <a className="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i className="fas fa-map-marker-alt" /> Ho Chi Minh </a>
+                            <div className="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+                                <a className="dropdown-item waves-effect waves-light" href="#">Can Tho</a>
+                                <a className="dropdown-item waves-effect waves-light" href="#">Vung Tau</a>
+                                <a className="dropdown-item waves-effect waves-light" href="#">Ha Noi</a>
+                                <a className="dropdown-item waves-effect waves-light" href="#">Da Nang</a>
+                            </div>
+                        </li>
+                    </ul>
+
                 </div>
-              </div>
-            </div>
-          </nav>
+
+            </nav>
+            <div className="just-a-div" />
         </div>
-      </div>
     );
   }
 }

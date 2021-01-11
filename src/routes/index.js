@@ -29,17 +29,18 @@ const routesGuest = [
     path: "/booking",
     component: BookingPage,
   },
-  {
-    exact: false,
-    path: "/signUp",
-    component: UserPage,
-  },
+
 ];
 const routesLogin = [
   {
     exact: true,
     path: "/login",
     component: AuthPage,
+  },
+  {
+    exact: false,
+    path: "/signUp",
+    component: UserPage,
   },
 ];
 
