@@ -3,9 +3,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { routesGuest, routesUser, routesAdmin, routesLogin } from "./routes";
 import GuestLayout from "./containers/GuestLayout";
 import PageNotFound from "./containers/PageNotFound";
+
 import AuthPage from "./containers/AuthPage";
 import "antd/dist/antd.css";
-import AdminLayout from "./containers/AdminLayout";
+
 
 function App() {
   const showLayoutGuest = (routes) => {
