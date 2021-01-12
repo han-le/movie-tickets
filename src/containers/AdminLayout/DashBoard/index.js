@@ -5,6 +5,8 @@ import {
   LaptopOutlined,
   NotificationOutlined,
 } from "@ant-design/icons";
+import UserManagement from "../../../components/UserManagement/user-management";
+import MovieManagement from "../../../components/MovieManagement/movie-management";
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer, Sider } = Layout;
@@ -22,15 +24,14 @@ export default class DashBoard extends Component {
   render() {
     const { mode } = this.state;
     return (
-      <div>
-
-        <Tabs defaultActiveKey="1" tabPosition={mode} style={{ height: 150 }}>
-          <TabPane tab={`User Management`} key={1}>
-            a
+      <div className="dashboard__wrap">
+        <Tabs defaultActiveKey="1" tabPosition={mode}>
+          <TabPane id="han" tab={`User Management`} key={1}>
+            <UserManagement />
           </TabPane>
 
           <TabPane tab={`Movie Management`} key={2}>
-            b
+            <MovieManagement />
           </TabPane>
         </Tabs>
       </div>
