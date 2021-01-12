@@ -16,8 +16,8 @@ class UserPage extends Component {
       hoTen: "",
       email: "",
       soDt: "",
-      maNhom: "",
-      maLoaiNguoiDung: "",
+      maNhom: "GP01",
+      maLoaiNguoiDung: "KhachHang",
     };
   }
 
@@ -31,6 +31,7 @@ class UserPage extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.addUser(this.state);
+    console.log(e.data);
   };
 
   renderNoti = () => {
@@ -55,6 +56,7 @@ class UserPage extends Component {
               <div className="form__body-wrapper ">
                 <form className="form__content" onSubmit={this.handleSubmit}>
                   <span className="form__title">Sign Up</span>
+                  {this.renderNoti()}
                   <div className="wrap__input">
                     <input className="input" type="text" name="hoTen" placeholder="Full Name"
                            onChange={this.handleOnChange} />

@@ -23,8 +23,11 @@ export default function AdminLayout({ Component, ...props }) {
               <Component {...propsComponent} />
             </AdminRender>
           );
+        } else if (localStorage.getItem("User")) {
+          window.history.back() 
+         } else {
+          return <Redirect to="/login" />;
         }
-        return <Redirect to="/login" />;
       }}
     />
   );

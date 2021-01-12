@@ -53,6 +53,7 @@ class AuthPage extends Component {
                     <input className="input" type="password" name="matKhau" placeholder="Password"
                            onChange={this.handleOnChange} />
                   </div>
+                  {this.renderNoti()}
                   <div className="form__button-container">
                     <div className="form__button-wrap">
                       <div className="form__button-bg"></div>
