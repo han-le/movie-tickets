@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import { Layout, Menu, Breadcrumb, Tabs, Radio } from "antd";
 import {
   UserOutlined,
@@ -18,12 +20,14 @@ export default class DashBoard extends Component {
     };
   }
 
+  handleLogOut = () => {
+    localStorage.clear();
+  };
 
   render() {
     const { mode } = this.state;
     return (
       <div>
-
         <Tabs defaultActiveKey="1" tabPosition={mode} style={{ height: 150 }}>
           <TabPane tab={`User Management`} key={1}>
             a
@@ -33,8 +37,10 @@ export default class DashBoard extends Component {
             b
           </TabPane>
         </Tabs>
+        <Link to={"/"} className="dropdown-item" onClick={this.handleLogOut}>
+          Sign out
+        </Link>
       </div>
     );
   }
-
 }

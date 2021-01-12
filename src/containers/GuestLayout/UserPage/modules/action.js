@@ -6,20 +6,18 @@ import {
 import Axios from "axios";
 
 export const actAddUserApi = (user) => {
-  // let accessToken = JSON.parse(localStorage.getItem("UserAdmin")).accessToken;
   return (dispatch) => {
     dispatch(actAddUserRequest());
     Axios({
       url:
-        "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung",
+        "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
       method: "POST",
       data: user,
-      // headers: {
-      //   Authorization: `Bearer ${accessToken}`,
-      // },
+
     })
       .then((result) => {
         dispatch(actAddUserSuccess(result.data));
+        
       })
       .catch((err) => {
         dispatch(actAddUserFailed(err));

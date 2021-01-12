@@ -8,7 +8,6 @@ import AuthPage from "./containers/AuthPage";
 import "antd/dist/antd.css";
 import AdminLayout from "./containers/AdminLayout";
 
-
 function App() {
   const showLayoutGuest = (routes) => {
     if (routes && routes.length > 0) {
