@@ -4,12 +4,24 @@ import BookingPage from "../containers/GuestLayout/BookingPage";
 import AuthPage from "../containers/AuthPage";
 import UserPage from "../containers/GuestLayout/UserPage";
 import DashBoard from "../containers/AdminLayout/DashBoard"
+import MovieManagement from "../components/MovieManagement/movie-management";
+import UserManagement from "../components/UserManagement/user-management";
 
 const routesAdmin = [
   {
-    exact: false,
+    exact: true,
     path: "/dashboard",
     component: DashBoard,
+  },
+  {
+    exact: true,
+    path: "/dashboard/user",
+    component: UserManagement,
+  },
+  {
+    exact: true,
+    path: "/dashboard/movie",
+    component: MovieManagement,
   }
 ];
 

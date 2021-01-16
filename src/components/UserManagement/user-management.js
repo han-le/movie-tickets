@@ -1,13 +1,9 @@
 import React, {Component} from 'react';
-import { Table, Tag, Space, Button } from 'antd';
+import { Table, Space, Button } from 'antd';
 import 'antd/dist/antd.css';
 import Search from "../Search/search";
-import { SearchOutlined } from '@ant-design/icons';
-
 
 class UserManagement extends Component {
-
-
 
     columns = [
         //Column Seq
@@ -58,9 +54,9 @@ class UserManagement extends Component {
             key: 'action',
             render: () => (
                 <Space>
-                    <Button type="primary" shape="circle"><i className="fa fa-plus" /></Button>
-                    <Button shape="circle"><i className="fa fa-edit" /></Button>
-                    <Button type="primary" danger shape="circle"><i className="fa fa-trash" /></Button>
+                    <Button shape="circle" style={{background: "#aff4f9", color: "#128f98", border: "none"}}><i className="fa fa-plus" /></Button>
+                    <Button shape="circle" style={{background: "#e3c7ff", color: "#6f0dd0", border: "none"}}><i className="fas fa-pen" /></Button>
+                    <Button shape="circle" style={{background: "#baf5c0", color: "#09a519", border: "none"}}><i className="fa fa-trash" /></Button>
 
                 </Space>
             ),
@@ -313,11 +309,28 @@ class UserManagement extends Component {
 
     render() {
         return (
-            <div>
-                <h1>User Management</h1>
-                <Button type="primary">ADD USER <i className="fa fa-plus" /></Button>
-                <Search />
-                <Table columns={this.columns} dataSource={this.data} />
+            <div className={"dashboard__content"}>
+                <div className="dashboard__card">
+                    <div className="card__header">
+                        <div className="card__header-title">
+                            <h2 className="title">User Management</h2>
+                        </div>
+                        <div className="card__header-actions">
+                            <Search />
+                            <Button className={"add-btn btn-shadow"}>
+                                <span style={{marginRight: 9}}>ADD USER </span>
+                                <i className="fa fa-plus" />
+                            </Button>
+                        </div>
+                    </div>
+                    <div className="card__body">
+                        <div className="card__body-wrap">
+                            <Table columns={this.columns} dataSource={this.data} style={{border: '1px solid #f0f0f0'}} />
+                        </div>
+                    </div>
+                </div>
+
+
 
             </div>
         );

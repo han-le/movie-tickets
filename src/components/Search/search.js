@@ -8,7 +8,7 @@ function Search () {
 
     return (
         <Space direction="vertical">
-            <Search placeholder="username or full name" onSearch={onSearch} enterButton />
+            <Search placeholder="" onSearch={onSearch} enterButton />
         </Space>
     );
 }
