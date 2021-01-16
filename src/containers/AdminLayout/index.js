@@ -1,17 +1,61 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import FooterGuest from "../../components/FooterGuest";
-import NavbarGuest from "../../components/NavbarGuest";
+import {Route, Redirect, Link, NavLink} from "react-router-dom";
+// import {Layout, Menu, Icon} from "antd";
+import { Menu, Layout} from "antd";
+
+import {VideoCameraOutlined, UserOutlined} from "@ant-design/icons";
+import NavbarAdmin from "../../components/NavbarAdmin";
 
 function AdminRender(props) {
+
+    const {Content, Sider} = Layout;
+
   return (
     <div>
-      {/*  Cai nay chay truoc loading page va de len html*/}
-      {props.children}
-      {/*<FooterGuest />*/}
+        {/*Components used for all pages*/}
+        <Layout>
+            <NavbarAdmin />
+            <Layout>
+                <Sider width={200} className="site-layout-background">
+                    <Menu
+                        mode="inline"
+                        theme="dark"
+                        defaultSelectedKeys={['1']}
+                        style={{height: '100%', borderRight: 0}}
+                    >
+                        <Menu.Item key="1" icon={<UserOutlined/>}>
+                            <Link to={"/dashboard/user"}>
+                                <span>Users</span>
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="2" icon={<VideoCameraOutlined />} >
+                            <Link to={"/dashboard/movie"}>
+                                <span>Movies</span>
+                            </Link>
+                        </Menu.Item>
+                    </Menu>
+                </Sider>
+                <Layout style={{padding: '0 24px 24px'}}>
+                    <Content
+                        className="site-layout-background"
+                        style={{
+                            padding: 24,
+                            margin: 0,
+                            minHeight: 280,
+                        }}
+                    >
+                        {/* Noi dung thay doi theo tung page: Gom User Component & Movie Component*/}
+                        {props.children}
+
+                    </Content>
+                </Layout>
+            </Layout>
+        </Layout>
+
     </div>
   );
 }
+
 export default function AdminLayout({ Component, ...props }) {
   return (
     <Route
