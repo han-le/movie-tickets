@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Space, Table} from "antd";
 import Search from "../Search/search";
+import {Link} from "react-router-dom";
+
 
 class MovieManagement extends Component {
 
@@ -23,13 +25,14 @@ class MovieManagement extends Component {
         },
         {
             title: 'Trailer',
-            dataIndex: 'trailer',
             key: 'trailer',
+            dataIndex: 'trailer',
         },
         {
             title: 'Poster',
-            dataIndex: 'hinhAnh',
             key: 'hinhAnh',
+            dataIndex: 'https://i.pinimg.com/236x/8b/6f/15/8b6f15fc5c6397520960b26114fdc57c.jpg',
+            render:  () => <img src={`https://i.pinimg.com/236x/8b/6f/15/8b6f15fc5c6397520960b26114fdc57c.jpg`} />
         },
         {
             title: 'Description',
@@ -262,10 +265,11 @@ class MovieManagement extends Component {
                         </div>
                         <div className="card__header-actions">
                             <Search />
-                            <Button className={"add-btn btn-shadow"}>
+
+                            <Link to={"/dashboard/add-movie"} className={"add-btn btn-shadow"} >
                                 <span style={{marginRight: 9}}>ADD MOVIE </span>
                                 <i className="fa fa-plus" />
-                            </Button>
+                            </Link>
                         </div>
                     </div>
                     <div className="card__body">

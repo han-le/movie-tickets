@@ -1,14 +1,13 @@
 import React from "react";
-import {Route, Redirect, Link, NavLink} from "react-router-dom";
-// import {Layout, Menu, Icon} from "antd";
+import {Route, Redirect, Link} from "react-router-dom";
 import { Menu, Layout} from "antd";
 
-import {VideoCameraOutlined, UserOutlined} from "@ant-design/icons";
+import {VideoCameraOutlined, UserOutlined, FundOutlined} from "@ant-design/icons";
 import NavbarAdmin from "../../components/NavbarAdmin";
 
 function AdminRender(props) {
 
-    const {Content, Sider} = Layout;
+    const {Content, Sider, Footer} = Layout;
 
   return (
     <div>
@@ -23,12 +22,17 @@ function AdminRender(props) {
                         defaultSelectedKeys={['1']}
                         style={{height: '100%', borderRight: 0}}
                     >
-                        <Menu.Item key="1" icon={<UserOutlined/>}>
+                        <Menu.Item key="1" icon={<FundOutlined />}>
+                            <Link to={"/dashboard"}>
+                                <span>Dashboard</span>
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="2" icon={<UserOutlined/>}>
                             <Link to={"/dashboard/user"}>
                                 <span>Users</span>
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="2" icon={<VideoCameraOutlined />} >
+                        <Menu.Item key="3" icon={<VideoCameraOutlined />} >
                             <Link to={"/dashboard/movie"}>
                                 <span>Movies</span>
                             </Link>
@@ -48,6 +52,7 @@ function AdminRender(props) {
                         {props.children}
 
                     </Content>
+                    <Footer style={{ textAlign: 'center' }}>Ticket Project. Created by Han Le (@han-le) and Huy Duong (@erikhuy)</Footer>
                 </Layout>
             </Layout>
         </Layout>

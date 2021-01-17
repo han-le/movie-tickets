@@ -6,6 +6,8 @@ import UserPage from "../containers/GuestLayout/UserPage";
 import DashBoard from "../containers/AdminLayout/DashBoard"
 import MovieManagement from "../components/MovieManagement/movie-management";
 import UserManagement from "../components/UserManagement/user-management";
+import AddMovie from "../components/AddMovie/AddMovie";
+import AddUser from "../components/AddUser/AddUser";
 
 const routesAdmin = [
   {
@@ -22,6 +24,16 @@ const routesAdmin = [
     exact: true,
     path: "/dashboard/movie",
     component: MovieManagement,
+  },
+  {
+    exact: true,
+    path: "/dashboard/add-movie",
+    component: AddMovie,
+  },
+  {
+    exact: true,
+    path: "/dashboard/add-user",
+    component: AddUser,
   }
 ];
 

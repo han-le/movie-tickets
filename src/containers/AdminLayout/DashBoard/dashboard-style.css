@@ -2,6 +2,11 @@
 
 .btn-shadow {
     box-shadow: 0 0.125rem 0.625rem rgb(255 193 7), 0 0.0625rem 0.125rem rgb(255 193 7);
+    padding: 4px 15px;
+}
+
+.btn-submit {
+    text-align: center;
 }
 
 .dashboard__card {
@@ -36,7 +41,14 @@
     background-color: #ffd764;
     border-color: #ffd764;
     margin-left: 20px;
+    transition: all 0.2s;
 }
+
+.dashboard__card .card__header .card__header-actions .add-btn:hover {
+    background-color: rgb(255 223 129);
+    text-decoration: none;
+}
+
 .dashboard__card .card__body {
     padding: 25px;
 }
