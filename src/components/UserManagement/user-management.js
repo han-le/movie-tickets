@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Table, Space, Button } from 'antd';
 import 'antd/dist/antd.css';
 import Search from "../Search/search";
+import {Link} from "react-router-dom";
 
 class UserManagement extends Component {
 
@@ -57,7 +58,6 @@ class UserManagement extends Component {
                     <Button shape="circle" style={{background: "#aff4f9", color: "#128f98", border: "none"}}><i className="fa fa-plus" /></Button>
                     <Button shape="circle" style={{background: "#e3c7ff", color: "#6f0dd0", border: "none"}}><i className="fas fa-pen" /></Button>
                     <Button shape="circle" style={{background: "#baf5c0", color: "#09a519", border: "none"}}><i className="fa fa-trash" /></Button>
-
                 </Space>
             ),
         },
@@ -317,10 +317,10 @@ class UserManagement extends Component {
                         </div>
                         <div className="card__header-actions">
                             <Search />
-                            <Button className={"add-btn btn-shadow"}>
+                            <Link to={"/dashboard/add-user"} className={"add-btn btn-shadow"} >
                                 <span style={{marginRight: 9}}>ADD USER </span>
                                 <i className="fa fa-plus" />
-                            </Button>
+                            </Link>
                         </div>
                     </div>
                     <div className="card__body">
