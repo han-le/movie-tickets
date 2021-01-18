@@ -89,7 +89,7 @@ class UserPage extends Component {
                     </div>
                   </div>
                   <div className="form__button-sign-in">
-                    <Link to={"/"}>Do this later</Link>
+                    <Link to={"/login"}>Do this later</Link>
                   </div>
                 </form>
               </div>
