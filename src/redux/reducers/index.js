@@ -5,6 +5,7 @@ import cinemaCarouselReducer from "../../components/CarouselCinema/modules/reduc
 import addGheReducer from "./../../containers/GuestLayout/BookingPage/modules/reducer";
 import authReducer from "../../containers/AuthPage/modules/reducer";
 import addUserReducer from "../../containers/GuestLayout/UserPage/modules/reducer";
+import userListReducer from "../../components/UserManagement/modules/reducer";
 //Create rootReducer to use in store. This manages CHILD REDUCERS in the project
 const rootReducer = combineReducers({
   listNowPlayingReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   addGheReducer,
   authReducer,
   addUserReducer,
+  userListReducer
 });
 
 export default rootReducer;
