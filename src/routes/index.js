@@ -8,6 +8,7 @@ import MovieManagement from "../components/MovieManagement/movie-management";
 import UserManagement from "../components/UserManagement/user-management";
 import AddMovie from "../components/AddMovie/AddMovie";
 import AddUser from "../components/AddUser/AddUser";
+import UserProfile from "../components/UserProfile/UserProfile";
 
 const routesAdmin = [
   {
@@ -34,7 +35,7 @@ const routesAdmin = [
     exact: true,
     path: "/dashboard/add-user",
     component: AddUser,
-  }
+  },
 ];
 
 const routesGuest = [
@@ -53,6 +54,11 @@ const routesGuest = [
     path: "/booking",
     component: BookingPage,
   },
+  {
+    exact: true,
+    path: "/profile",
+    component: UserProfile,
+  }
 
 ];
 const routesLogin = [
