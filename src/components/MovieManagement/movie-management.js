@@ -32,7 +32,7 @@ class MovieManagement extends Component {
             title: 'Poster',
             key: 'hinhAnh',
             dataIndex: 'https://i.pinimg.com/236x/8b/6f/15/8b6f15fc5c6397520960b26114fdc57c.jpg',
-            render:  () => <img src={`https://i.pinimg.com/236x/8b/6f/15/8b6f15fc5c6397520960b26114fdc57c.jpg`} />
+            render:  () => <img src={`https://i.pinimg.com/236x/8b/6f/15/8b6f15fc5c6397520960b26114fdc57c.jpg`} alt="poster" />
         },
         {
             title: 'Description',

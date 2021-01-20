@@ -3,8 +3,19 @@ import { Table, Space, Button } from 'antd';
 import 'antd/dist/antd.css';
 import Search from "../Search/search";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
+import {actUserListAPI} from "./modules/actions";
 
 class UserManagement extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        console.log("Did mount")
+        this.props.userListAPI();
+    }
 
     columns = [
         //Column Seq
@@ -63,250 +74,6 @@ class UserManagement extends Component {
         },
     ];
 
-    //Array of data
-    data = [
-        {
-            taiKhoan: "AAADDĐ",
-            hoTen: "Trần Minh phúCs",
-            email: "as2aagosv2@gmail.com",
-            soDt: "0379741460",
-            matKhau: "123123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "admin1210",
-            hoTen: "admin",
-            email: "admin",
-            soDt: "0122906666999",
-            matKhau: "admin",
-            maLoaiNguoiDung: "QuanTri"
-        },
-        {
-            taiKhoan: "admin994",
-            hoTen: "hai",
-            email: "123@123",
-            soDt: "123",
-            matKhau: "123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "asljncsljncsa",
-            hoTen: "acsacsacsa",
-            email: "ccsacsasac@gmail.com",
-            soDt: "232121214214",
-            matKhau: "sacsacsc",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "demo",
-            hoTen: "demo",
-            email: "a@gmail.com",
-            soDt: "646",
-            matKhau: "demo",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "dinhnhan123",
-            hoTen: "Đỗ Đình Nhân",
-            email: "dodinhnhanabc@gmail.com",
-            soDt: "0969103125",
-            matKhau: "123123123",
-            maLoaiNguoiDung: "QuanTri"
-        },
-        {
-            taiKhoan: "AAADDĐ",
-            hoTen: "Trần Minh phúCs",
-            email: "as2aagosv2@gmail.com",
-            soDt: "0379741460",
-            matKhau: "123123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "admin1210",
-            hoTen: "admin",
-            email: "admin",
-            soDt: "0122906666999",
-            matKhau: "admin",
-            maLoaiNguoiDung: "QuanTri"
-        },
-        {
-            taiKhoan: "admin994",
-            hoTen: "hai",
-            email: "123@123",
-            soDt: "123",
-            matKhau: "123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "asljncsljncsa",
-            hoTen: "acsacsacsa",
-            email: "ccsacsasac@gmail.com",
-            soDt: "232121214214",
-            matKhau: "sacsacsc",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "demo",
-            hoTen: "demo",
-            email: "a@gmail.com",
-            soDt: "646",
-            matKhau: "demo",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "dinhnhan123",
-            hoTen: "Đỗ Đình Nhân",
-            email: "dodinhnhanabc@gmail.com",
-            soDt: "0969103125",
-            matKhau: "123123123",
-            maLoaiNguoiDung: "QuanTri"
-        },
-        {
-            taiKhoan: "AAADDĐ",
-            hoTen: "Trần Minh phúCs",
-            email: "as2aagosv2@gmail.com",
-            soDt: "0379741460",
-            matKhau: "123123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "admin1210",
-            hoTen: "admin",
-            email: "admin",
-            soDt: "0122906666999",
-            matKhau: "admin",
-            maLoaiNguoiDung: "QuanTri"
-        },
-        {
-            taiKhoan: "admin994",
-            hoTen: "hai",
-            email: "123@123",
-            soDt: "123",
-            matKhau: "123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "asljncsljncsa",
-            hoTen: "acsacsacsa",
-            email: "ccsacsasac@gmail.com",
-            soDt: "232121214214",
-            matKhau: "sacsacsc",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "demo",
-            hoTen: "demo",
-            email: "a@gmail.com",
-            soDt: "646",
-            matKhau: "demo",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "dinhnhan123",
-            hoTen: "Đỗ Đình Nhân",
-            email: "dodinhnhanabc@gmail.com",
-            soDt: "0969103125",
-            matKhau: "123123123",
-            maLoaiNguoiDung: "QuanTri"
-        },
-        {
-            taiKhoan: "AAADDĐ",
-            hoTen: "Trần Minh phúCs",
-            email: "as2aagosv2@gmail.com",
-            soDt: "0379741460",
-            matKhau: "123123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "admin1210",
-            hoTen: "admin",
-            email: "admin",
-            soDt: "0122906666999",
-            matKhau: "admin",
-            maLoaiNguoiDung: "QuanTri"
-        },
-        {
-            taiKhoan: "admin994",
-            hoTen: "hai",
-            email: "123@123",
-            soDt: "123",
-            matKhau: "123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "asljncsljncsa",
-            hoTen: "acsacsacsa",
-            email: "ccsacsasac@gmail.com",
-            soDt: "232121214214",
-            matKhau: "sacsacsc",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "demo",
-            hoTen: "demo",
-            email: "a@gmail.com",
-            soDt: "646",
-            matKhau: "demo",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "dinhnhan123",
-            hoTen: "Đỗ Đình Nhân",
-            email: "dodinhnhanabc@gmail.com",
-            soDt: "0969103125",
-            matKhau: "123123123",
-            maLoaiNguoiDung: "QuanTri"
-        },
-        {
-            taiKhoan: "AAADDĐ",
-            hoTen: "Trần Minh phúCs",
-            email: "as2aagosv2@gmail.com",
-            soDt: "0379741460",
-            matKhau: "123123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "admin1210",
-            hoTen: "admin",
-            email: "admin",
-            soDt: "0122906666999",
-            matKhau: "admin",
-            maLoaiNguoiDung: "QuanTri"
-        },
-        {
-            taiKhoan: "admin994",
-            hoTen: "hai",
-            email: "123@123",
-            soDt: "123",
-            matKhau: "123",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "asljncsljncsa",
-            hoTen: "acsacsacsa",
-            email: "ccsacsasac@gmail.com",
-            soDt: "232121214214",
-            matKhau: "sacsacsc",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "demo",
-            hoTen: "demo",
-            email: "a@gmail.com",
-            soDt: "646",
-            matKhau: "demo",
-            maLoaiNguoiDung: "KhachHang"
-        },
-        {
-            taiKhoan: "dinhnhan123",
-            hoTen: "Đỗ Đình Nhân",
-            email: "dodinhnhanabc@gmail.com",
-            soDt: "0969103125",
-            matKhau: "123123123",
-            maLoaiNguoiDung: "QuanTri"
-        },
-    ];
-
     render() {
         return (
             <div className={"dashboard__content"}>
@@ -325,16 +92,29 @@ class UserManagement extends Component {
                     </div>
                     <div className="card__body">
                         <div className="card__body-wrap">
-                            <Table columns={this.columns} dataSource={this.data} style={{border: '1px solid #f0f0f0'}} />
+                            <Table columns={this.columns} dataSource={this.props.userList} style={{border: '1px solid #f0f0f0'}} />
                         </div>
                     </div>
                 </div>
-
-
-
             </div>
         );
+    };
+
+}
+
+const mapStateToProps = (state) => {
+    return {
+        loading: state.userListReducer.loading,
+        userList: state.userListReducer.data
     }
 }
 
-export default UserManagement;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        userListAPI: () => {
+            dispatch(actUserListAPI())
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(UserManagement);
