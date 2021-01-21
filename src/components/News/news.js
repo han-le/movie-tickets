@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import "./news_style.css"
 import NewsCard from "../NewsCard/news-card";
 
 class News extends Component {
@@ -17,7 +16,7 @@ class News extends Component {
                     id: 2,
                     image: "https://i.pinimg.com/originals/c8/32/7c/c8327cefb1af07ae6780d1bb9b1abf54.jpg",
                     title: "The Watch‘s tough-talking crime-fighter spills all on Terry Pratchett’s lawless dystopia",
-                    intro: "Marama Corlett is an on-screen talent not to be underestimated. The multi-hyphenate actor has already tussled with the best of them"
+                    intro: "Marama Corlett is an on-screen talent not to be underestimated. The multi-hyphenate actor ..."
                 },
                 {
                     id: 3,

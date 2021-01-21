@@ -25,12 +25,7 @@ const ShowTime = () => {
   }, [])
 
   return (
-    <div className="showTime__content container">
-      <div className='flex-box'>
-        <img className="section__icon" src="https://www.flaticon.com/svg/static/icons/svg/599/599887.svg" alt="trending-icon"/>
-        <h3 className="section__title">Today we have</h3>
-      </div>
-      <div className='system-cinema'>
+      <div className='system-cinema showtime-shadow'>
         <Tabs tabPosition='left'>
           {
             Array.isArray(systemCinemaList) && systemCinemaList.length ? 
@@ -44,7 +39,6 @@ const ShowTime = () => {
           }
         </Tabs>
       </div>
-    </div>
   )
 }
 
