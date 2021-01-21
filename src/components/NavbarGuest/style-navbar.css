@@ -5,7 +5,7 @@
   position: fixed;
   width: 100%;
   background-color: #fffffff5;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 2rem 0 rgba(136,152,170,.15);
   z-index: 9;
   transition: all 0.2s;
 }

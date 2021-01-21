@@ -5,6 +5,7 @@ import Search from "../Search/search";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {actUserListAPI} from "./modules/actions";
+import UserEdit from "../UserEdit/UserEdit";
 
 class UserManagement extends Component {
 
@@ -67,7 +68,7 @@ class UserManagement extends Component {
             render: () => (
                 <Space>
                     <Button shape="circle" style={{background: "#aff4f9", color: "#128f98", border: "none"}}><i className="fa fa-plus" /></Button>
-                    <Button shape="circle" style={{background: "#e3c7ff", color: "#6f0dd0", border: "none"}}><i className="fas fa-pen" /></Button>
+                    <UserEdit />
                     <Button shape="circle" style={{background: "#baf5c0", color: "#09a519", border: "none"}}><i className="fa fa-trash" /></Button>
                 </Space>
             ),
