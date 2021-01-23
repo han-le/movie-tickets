@@ -4,27 +4,23 @@ import {Link} from "react-router-dom";
 
 export default class MovieCard extends Component {
 
-    getImgLink = (src) => {
-        if (!src || src === "http://movie0706.cybersoft.edu.vn/hinhanh/avenger-infinity-war_gp07.jpg") {
-            return "https://i.stack.imgur.com/y9DpT.jpg";
-        }
-        return src;
-    }
 
     render() {
         const {movieObj} = this.props;
 
         return (
-            <div className="movie-card">
-                <div className="card__image">
-                    <img src={this.getImgLink(movieObj.hinhAnh)} className="card-img-top" alt="movie poster"/>
-                </div>
 
-                <div className="card-body">
-                    {/*<a href="#" className="btn btn-primary">Buy Ticket</a>*/}
-                    <Link className="btn btn-primary"  to={`/movie/${movieObj.maPhim}`} >Buy Ticket</Link>
+            <Link to={`/movie/${movieObj.maPhim}`} className="movie__card">
+                <div className="news__wrapper"
+                     style={{background: `url(${movieObj.hinhAnh}) center/cover no-repeat`, width: 270}}>
+                    <div className="data">
+                        <div className="content">
+                            <h1 className="title">{movieObj.tenPhim}</h1>
+                            <Link to={`/movie/${movieObj.maPhim}`} className="button">T I C K E T <i className="fas fa-ticket-alt" /></Link>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </Link>
         );
     }
 }

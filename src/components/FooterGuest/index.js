@@ -6,7 +6,7 @@ export default class FooterGuest extends Component {
     return (
       <div>
         {/* ============Footer============ */}
-        <div className="container-fluid pb-0 mb-0 mt-5 justify-content-center text-light page-footer">
+        <div className="container-fluid pb-0 mb-0 justify-content-center text-light page-footer">
           <footer>
             <div className="row my-5 justify-content-center py-5">
               <div className="col-11">

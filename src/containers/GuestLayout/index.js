@@ -1,6 +1,6 @@
 import React from "react";
 import { Route,Redirect } from "react-router-dom";
-import FooterGuest from "../../components/FooterGuest";
+import "./guest-layout.css";
 import NavbarGuest from "../../components/NavbarGuest";
 
 function GuestRender(props) {
