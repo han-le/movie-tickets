@@ -4,9 +4,6 @@ import MovieCard from "../MovieCard";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./carousel-movie.css"
-import {actNowPlaying5MovieAPI} from "../../containers/GuestLayout/HomePage/modules/actions";
-
-
 
 export default class MultipleItems extends Component {
 
@@ -26,11 +23,39 @@ export default class MultipleItems extends Component {
 
         const settings = {
             dots: false,
-            infinite: true,
+            infinite: false,
             speed: 500,
             slidesToShow: 4,
-            slidesToScroll: 4
+            slidesToScroll: 4,
+            initialSlide: 0,
+            responsive: [
+                {
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2,
+                        initialSlide: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
         };
+
         return (
             <div className="container">
                 <Slider {...settings}>
@@ -40,18 +65,3 @@ export default class MultipleItems extends Component {
         );
     }
 }  //end of class
-
-// const mapStateToProps = (state) => {
-//     return {
-//         loading: state.listNowPlayingReducer.loading,
-//         nowPlayingList: state.listNowPlayingReducer.data,
-//     };
-// };
-//
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         nowPlayingListAPI: () => {
-//             dispatch(actNowPlaying5MovieAPI());
-//         }
-//     }
-// };
