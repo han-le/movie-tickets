@@ -9,8 +9,6 @@ export default class MultipleItems extends Component {
 
     renderMovieCard = () => {
         const itemToShow = this.props.itemsToShow;
-        console.log("I am function to render component MovieCard. My props now is::")
-        console.log(itemToShow);
         //check if the data is loaded ?
         if (itemToShow && itemToShow.length > 0) {
             return itemToShow.map((movieObj) => {

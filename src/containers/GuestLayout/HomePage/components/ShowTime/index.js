@@ -13,7 +13,7 @@ const ShowTime = () => {
 
   const fetchSystemListCinema = async () => {
     try {
-        const { data } = await axios.get('https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap')
+        const { data } = await axios.get('https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap')
         if (data) setSystemCinemaList(data)
     } catch (error) {
       console.log('error', error)
@@ -31,8 +31,8 @@ const ShowTime = () => {
             Array.isArray(systemCinemaList) && systemCinemaList.length ? 
               systemCinemaList.map((system, index) => {
                 return (
-                  <TabPane key={index} tab={<SystemIcon logo={system.logo}/>} key={system.maHeThongRap}>
-                    <SystemCinema systemId={system.maHeThongRap} />
+                  <TabPane className='cinema-tab' key={index} tab={<SystemIcon logo={system.logo}/>} key={system.maHeThongRap}>
+                    <SystemCinema systemData={system} />
                   </TabPane>
                 )
               }) : ''
