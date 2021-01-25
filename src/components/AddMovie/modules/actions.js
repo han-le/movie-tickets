@@ -23,15 +23,19 @@ export const actAddMovieAPI = (movie) => {
     //JSON.parse to convert string to an object
     let accessToken = JSON.parse(localStorage.getItem("UserAdmin")).accessToken;
 
+    let testObject = Object.assign({}, movie, {
+        "ngayKhoiChieu": "02/02/2021"
+    })
+
     if (localStorage.getItem("UserAdmin")) {
         return (dispatch) => {
             dispatch(actAddMovieRequest());
             Axios({
                 url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhim",
                 method: "POST",
-                data: movie,
+                data: testObject,
                 headers: {
-                    Authorization:`Bearer + ${accessToken}`
+                    Authorization:`Bearer ${accessToken}`
                 }
             })
                 .then((result) => {

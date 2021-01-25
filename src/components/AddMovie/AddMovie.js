@@ -9,29 +9,36 @@ class AddMovie extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            "maPhim": 0,
+            // "maPhim": 0,
             "tenPhim": "",
             "biDanh": "",
             "trailer": "",
             "hinhAnh": "",
             "moTa": "",
             "maNhom": "GP07",
-            "ngayKhoiChieu": "",
+            "ngayKhoiChieu": "25-01-2021",
             "danhGia": 9
         }
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        this.props.addUser(this.state)
+        alert("Submitted");
+        this.props.addMovie(this.state);
+        console.log(this.props.addMovie(this.state))
     }
 
     //Lay du lieu nguoi dung nhap vao va day vao State
     handleOnChange = (event) => {
         const {name, value} = event.target;
-        this.setState({
-            [name]:value
-        })
+        console.log([name, value]);
+
+        let formVal = {};
+        formVal[name] = value;
+
+        let obj = Object.assign({}, this.state, formVal);
+
+        this.setState(obj);
     }
 
     render() {
@@ -47,12 +54,9 @@ class AddMovie extends Component {
                         <div className="card__body-wrap">
 
                         {/*    Form*/}
-                            <form action="" onSubmit={this.handleSubmit}>
+                            <form onSubmit={this.handleSubmit}>
                                 <div className="form-row">
-                                    <div className="form-group col-md-6">
-                                        <label htmlFor="maPhim">Movie ID</label>
-                                        <input type="text" className="form-control" id="" name="maPhim" onChange={this.handleOnChange}/>
-                                    </div>
+
                                     <div className="form-group col-md-6">
                                         <label htmlFor="tenPhim">Name</label>
                                         <input type="text" className="form-control" id="" name="tenPhim" onChange={this.handleOnChange}/>
@@ -102,7 +106,8 @@ class AddMovie extends Component {
                                     <input type="file" className="form-control-file" id="" name="hinhAnh" onChange={this.handleOnChange} />
                                 </div>
                                 <div className="btn-submit">
-                                    <Button type="primary">Submit</Button>
+                                    <button>Submit</button>
+                                    {/*<Button type="primary">Submit</Button>*/}
                                 </div>
                             </form>
                         {/*=======Form ======= */}
@@ -124,7 +129,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addUser: (movie) => {
+        addMovie: (movie) => {
             dispatch(actAddMovieAPI(movie))
         }
     }
