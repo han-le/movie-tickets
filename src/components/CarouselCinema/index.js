@@ -10,15 +10,12 @@ import {connect} from "react-redux";
 class Responsive extends Component {
 
     componentDidMount() {
-        console.log("Cinema Carousel Component Did Mount")
         this.props.cinemaListAPI();
     }
 
     renderCinemaCard = () => {
         //Get cinema list from mapStateToProps
         const cinemaList = this.props.cinemaList;
-        console.log("Carousel Cinema: API was called. Cinema list has:")
-        console.log(cinemaList);
         //Loop over the array when ONLY WHEN the array is loaded
         if (cinemaList && cinemaList.length > 0) {
             return cinemaList.map((cinema_object) => {

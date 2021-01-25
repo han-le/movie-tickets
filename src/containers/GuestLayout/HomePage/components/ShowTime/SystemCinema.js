@@ -1,36 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import Cinema from './Cinema'
 import { Tabs } from 'antd';
-import axios from 'axios'
+import MovieBlock from './MovieBlock'
 
 const { TabPane } = Tabs;
 
-const SystemCinema = ({ systemId }) => {
-  
-  const [cinemaList, setCinemaList] = useState([])
-
-  const fetchSystemListCinema = async (id) => {
-    try {
-        const { data } = await axios.get(`https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${id}`)
-        if (data) setCinemaList(data)
-    } catch (error) {
-      console.log('error', error)
-    }
-  }
-
-  useEffect(() =>{
-    fetchSystemListCinema(systemId)
-  }, [systemId])
-
+const SystemCinema = ({ systemData }) => {
+  const {lstCumRap = [] } = systemData
   return (
     <div>
-      {<Tabs tabPosition='left'>
+      {<Tabs style={{ minWidth: '700px' }} tabPosition='left'>
           {
-            Array.isArray(cinemaList) && cinemaList.length ? 
-              cinemaList.map((cinema, index) => {
+            Array.isArray(lstCumRap) && lstCumRap.length ? 
+              lstCumRap.map((cinema, index) => {
                 return (
-                  <TabPane key={index} tab={<Cinema systemId={systemId} cinemaData={cinema} />} key={index}>
-                    111
+                  <TabPane key={index} tab={<Cinema cinema={cinema}  />} key={index}>
+                      <MovieBlock cinema={cinema}/>
                   </TabPane>
                 )
               }) : ''

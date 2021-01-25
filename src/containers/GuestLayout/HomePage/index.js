@@ -22,7 +22,6 @@ class HomePage extends Component {
 
     //Get data from props
     componentDidMount() {
-        console.log("====== HomePage Did Mount =====")
         this.props.nowPlayingListAPI();
     }
 
@@ -47,11 +46,9 @@ class HomePage extends Component {
     };
 
     render() {
-        console.log("HomePage is rendered.")
         const {loading} = this.props;
 
         if (loading) {
-            console.log("Page is loading. (Loading = true)")
             return <Loader/>
         }
         return (

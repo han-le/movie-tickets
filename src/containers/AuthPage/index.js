@@ -3,7 +3,7 @@ import { actLoginApi } from "./modules/action";
 import { connect } from "react-redux";
 import Loader from "./../../components/Loader";
 import "./auth-page.css";
-
+import { message } from "antd";
 import { Link } from "react-router-dom";
 
 class AuthPage extends Component {
@@ -14,6 +14,14 @@ class AuthPage extends Component {
       matKhau: "",
     };
   }
+
+  openMessage = () => {
+    const key = "updatable";
+    message.error({ content: "Can't Access !", key, duration: 2 });
+    setTimeout(() => {
+      window.history.back();
+    }, 1000);
+  };
 
   handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +45,10 @@ class AuthPage extends Component {
   render() {
     const { loading } = this.props;
     if (loading) return <Loader />;
-    return (
+    if (localStorage.getItem("User") || localStorage.getItem("UserAdmin")) {
+      this.openMessage();
+    } else {
+      return (
         <div className="main_form_body">
           <div className="form__wrapper sign-in">
             <div className="form__container">
@@ -46,18 +57,30 @@ class AuthPage extends Component {
                 <form className="form__content" onSubmit={this.handleLogin}>
                   <span className="form__title">Sign In</span>
                   <div className="wrap__input">
-                    <input className="input" type="text" name="taiKhoan" placeholder="Username"
-                           onChange={this.handleOnChange} />
+                    <input
+                      className="input"
+                      type="text"
+                      name="taiKhoan"
+                      placeholder="Username"
+                      onChange={this.handleOnChange}
+                    />
                   </div>
                   <div className="wrap__input">
-                    <input className="input" type="password" name="matKhau" placeholder="Password"
-                           onChange={this.handleOnChange} />
+                    <input
+                      className="input"
+                      type="password"
+                      name="matKhau"
+                      placeholder="Password"
+                      onChange={this.handleOnChange}
+                    />
                   </div>
                   {this.renderNoti()}
                   <div className="form__button-container">
                     <div className="form__button-wrap">
                       <div className="form__button-bg"></div>
-                      <button className="form__button-btn" type="submit">Submit</button>
+                      <button className="form__button-btn" type="submit">
+                        Submit
+                      </button>
                     </div>
                   </div>
                   <div className="form__button-sign-in">
@@ -68,8 +91,8 @@ class AuthPage extends Component {
             </div>
           </div>
         </div>
-
-    );
+      );
+    }
   }
 }
 
