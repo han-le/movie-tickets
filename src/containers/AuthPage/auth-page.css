@@ -34,7 +34,7 @@ input {
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: rgba(22, 13, 148, 0.322);
+    background: #fd7e147a;
 }
 
 .main_form_body .form__wrapper .form__container .form__body-wrapper {
@@ -71,7 +71,6 @@ input {
 .main_form_body .form__wrapper .form__container .form__body-wrapper .form__content .wrap__input .input {
     display: block;
     width: 100%;
-    /*font-family: Poppins-Regular;*/
     font-size: 15px;
     color: #555;
     line-height: 1.2;
@@ -105,17 +104,10 @@ input {
     z-index: -1;
     width: 300%;
     height: 100%;
-    background: #db1563;
-    background: -webkit-linear-gradient(
-            -135deg,
-            #d5007d,
-            #e53935,
-            #d5007d,
-            #e53935
-    );
-    background: -o-linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
-    background: -moz-linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
-    background: linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
+    background: -webkit-linear-gradient(-135deg,#fb7709, #e53935, #eab105, #e53935);
+    background: -o-linear-gradient(-135deg, #fb7709, #e53935, #eab105, #e53935);
+    background: -moz-linear-gradient(-135deg, #fb7709, #e53935, #eab105, #e53935);
+    background: linear-gradient(-135deg, #fb7709, #e53935, #eab105, #e53935);;
     top: 0;
     left: -100%;
     -webkit-transition: all 0.4s;
@@ -138,7 +130,6 @@ input {
     padding: 0 20px;
     min-width: 244px;
     height: 50px;
-    /*font-family: Poppins-Medium;*/
     font-size: 16px;
     color: #fff;
     line-height: 1.2;
