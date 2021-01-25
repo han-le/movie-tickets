@@ -22,21 +22,6 @@ input {
     background-size: cover;
 }
 
-.main_form_body .form__wrapper .form__container {
-    width: 100%;
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    padding: 15px;
-    background: rgba(22, 13, 148, 0.322);
-}
-
 .main_form_body .form__wrapper .form__container .form__body-wrapper {
     width: 500px;
     background: #fff;
@@ -71,7 +56,6 @@ input {
 .main_form_body .form__wrapper .form__container .form__body-wrapper .form__content .wrap__input .input {
     display: block;
     width: 100%;
-    /*font-family: Poppins-Regular;*/
     font-size: 15px;
     color: #555;
     line-height: 1.2;
@@ -98,50 +82,6 @@ input {
     width: auto;
     overflow: hidden;
     margin: 0 auto;
-}
-
-.main_form_body .form__wrapper .form__container .form__body-wrapper .form__content .form__button-container .form__button-wrap .form__button-bg {
-    position: absolute;
-    z-index: -1;
-    width: 300%;
-    height: 100%;
-    background: #db1563;
-    background: -webkit-linear-gradient(
-            -135deg,
-            #d5007d,
-            #e53935,
-            #d5007d,
-            #e53935
-    );
-    background: -o-linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
-    background: -moz-linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
-    background: linear-gradient(-135deg, #d5007d, #e53935, #d5007d, #e53935);
-    top: 0;
-    left: -100%;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
-}
-
-.main_form_body .form__wrapper .form__container .form__body-wrapper .form__content .form__button-container .form__button-wrap .form__button-btn {
-    outline: none !important;
-    border: none;
-    background: 0 0;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    min-width: 244px;
-    height: 50px;
-    /*font-family: Poppins-Medium;*/
-    font-size: 16px;
-    color: #fff;
-    line-height: 1.2;
 }
 
 .main_form_body .form__wrapper .form__container .form__body-wrapper .form__content .form__button-sign-in {

@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./carousel-cinema.css"
 import {actCinemaListAPI} from "./modules/actions";
-import cinemaCarouselReducer from "./modules/reducer";
 import {connect} from "react-redux";
 
 class Responsive extends Component {
