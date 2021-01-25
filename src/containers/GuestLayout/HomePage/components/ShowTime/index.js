@@ -13,7 +13,7 @@ const ShowTime = () => {
 
   const fetchSystemListCinema = async () => {
     try {
-        const { data } = await axios.get('https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap')
+        const { data } = await axios.get('https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP07')
         if (data) setSystemCinemaList(data)
     } catch (error) {
       console.log('error', error)
