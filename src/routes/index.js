@@ -7,7 +7,7 @@ import DashBoard from "../containers/AdminLayout/DashBoard"
 import MovieManagement from "../components/MovieManagement/movie-management";
 import UserManagement from "../components/UserManagement/user-management";
 import AddMovie from "../components/AddMovie/AddMovie";
-import AddUser from "../components/AddUser/AddUser";
+import AddUser from "../components/AddUser";
 import UserProfile from "../components/UserProfile/UserProfile";
 
 const routesAdmin = [

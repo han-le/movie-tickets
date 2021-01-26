@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
-import { Table, Space, Button } from 'antd';
+import React, { Component } from 'react';
+import { Table, Space, Button, message } from 'antd';
 import 'antd/dist/antd.css';
 import Search from "../Search/search";
-import {Link} from "react-router-dom";
-import {connect} from "react-redux";
-import {actUserListAPI} from "./modules/actions";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { actUserListAPI, actUserListDeleteAPI } from "./modules/actions";
 import UserEdit from "../UserEdit/UserEdit";
+import Loader from "../../components/Loader"
 
 class UserManagement extends Component {
 
@@ -14,8 +15,14 @@ class UserManagement extends Component {
     }
 
     componentDidMount() {
-        console.log("Did mount")
+
         this.props.userListAPI();
+    }
+
+    deleteUser = (id) => {
+        this.props.deleteUserAPI(id)
+        // window.location.replace("/dashboard/user")
+
     }
 
     columns = [
@@ -63,19 +70,20 @@ class UserManagement extends Component {
 
         //Column Action
         {
-            title: '',
-            key: 'action',
-            render: () => (
+            title: 'Management',
+            render: (record) => (
                 <Space>
-                    <Button shape="circle" style={{background: "#aff4f9", color: "#128f98", border: "none"}}><i className="fa fa-plus" /></Button>
+                    <Button shape="circle" style={{ background: "#aff4f9", color: "#128f98", border: "none" }}><i className="fa fa-plus" /></Button>
                     <UserEdit />
-                    <Button shape="circle" style={{background: "#baf5c0", color: "#09a519", border: "none"}}><i className="fa fa-trash" /></Button>
+                    <Button onClick={() => { this.deleteUser(record.taiKhoan) }} shape="circle" style={{ background: "#baf5c0", color: "#09a519", border: "none" }}><i className="fa fa-trash" /></Button>
                 </Space>
             ),
         },
     ];
 
     render() {
+        const loader = this.props.loading;
+        if (loader) { return <Loader /> };
         return (
             <div className={"dashboard__content"}>
                 <div className="dashboard__card">
@@ -86,36 +94,35 @@ class UserManagement extends Component {
                         <div className="card__header-actions">
                             <Search />
                             <Link to={"/dashboard/add-user"} className={"add-btn btn-shadow"} >
-                                <span style={{marginRight: 9}}>ADD USER </span>
+                                <span style={{ marginRight: 9 }}>ADD USER </span>
                                 <i className="fa fa-plus" />
                             </Link>
                         </div>
                     </div>
                     <div className="card__body">
                         <div className="card__body-wrap">
-                            <Table columns={this.columns} dataSource={this.props.userList} style={{border: '1px solid #f0f0f0'}} />
+                            <Table columns={this.columns} dataSource={this.props.userList} style={{ border: '1px solid #f0f0f0' }} />
                         </div>
                     </div>
                 </div>
             </div>
         );
     };
-
 }
-
 const mapStateToProps = (state) => {
     return {
         loading: state.userListReducer.loading,
-        userList: state.userListReducer.data
+        userList: state.userListReducer.data,
     }
 }
-
 const mapDispatchToProps = (dispatch) => {
     return {
         userListAPI: () => {
             dispatch(actUserListAPI())
+        },
+        deleteUserAPI: (id) => {
+            dispatch(actUserListDeleteAPI(id))
         }
     }
 }
-
-export default connect(mapStateToProps,mapDispatchToProps)(UserManagement);
+export default connect(mapStateToProps, mapDispatchToProps)(UserManagement);
