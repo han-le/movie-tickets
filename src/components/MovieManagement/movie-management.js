@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import {Button, Space, Table} from "antd";
+import {Button, message, Space, Table} from "antd";
 import Search from "../Search/search";
 import {Link} from "react-router-dom";
-import {actNowPlayingMovieAPI} from "../../containers/GuestLayout/HomePage/modules/actions";
+import {actMovieDeleteAPI, actNowPlayingMovieAPI} from "../../containers/GuestLayout/HomePage/modules/actions";
 import { connect } from "react-redux";
+import Loading from "../Loader";
 
 
 class MovieManagement extends Component {
@@ -16,7 +17,25 @@ class MovieManagement extends Component {
         this.props.movieListAPI()
     }
 
+    deleteMovie = (movieID) => {
+        this.props.deleteMovieAPI(movieID);
+        this.openMessage()
+    }
+
+    openMessage = () => {
+        const {errorMovieDelete} = this.props;
+        if (errorMovieDelete) {
+            message.error({content: "Can not delete this movie at the moment"})
+        }
+    }
+
     columns = [
+        {
+            title: 'Poster',
+            key: 'hinhAnh',
+            dataIndex: 'hinhAnh',
+            render:  (image) => <img src={image} width={45} height={45} alt="poster" />
+        },
         {
             title: 'Title',
             dataIndex: 'tenPhim',
@@ -28,12 +47,7 @@ class MovieManagement extends Component {
             key: 'biDanh',
         },
 
-        {
-            title: 'Poster',
-            key: 'hinhAnh',
-            dataIndex: 'hinhAnh',
-            render:  (image) => <img src={image} width={45} height={45} alt="poster" />
-        },
+
         {
             title: 'Trailer',
             key: 'trailer',
@@ -60,17 +74,21 @@ class MovieManagement extends Component {
         {
             title: '',
             key: 'action',
-            render: () => (
+            render: (record) => (
                 <Space>
                     <Button shape="circle" style={{background: "#aff4f9", color: "#128f98", border: "none"}}><i className="fa fa-plus" /></Button>
                     <Button shape="circle" style={{background: "#e3c7ff", color: "#6f0dd0", border: "none"}}><i className="fas fa-pen" /></Button>
-                    <Button shape="circle" style={{background: "#baf5c0", color: "#09a519", border: "none"}}><i className="fa fa-trash" /></Button>
+                    <Button shape="circle" style={{background: "#baf5c0", color: "#09a519", border: "none"}} onClick={() => {this.deleteMovie(record.maPhim)}}>
+                        <i className="fa fa-trash" />
+                    </Button>
                 </Space>
             ),
         },
     ];
 
     render() {
+        const loader = this.props.loading;
+        if (loader) { return <Loading />}
         return (
             <div className={"dashboard__content"}>
                 <div className="dashboard__card">
@@ -103,6 +121,7 @@ const mapStateToProps = (state) => {
     return {
         loading: state.listNowPlayingReducer.loading,
         movieList: state.listNowPlayingReducer.data,
+        errorMovieDelete: state.listNowPlayingReducer.errorMovieDelete
     };
 };
 
@@ -110,6 +129,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         movieListAPI: () => {
             dispatch(actNowPlayingMovieAPI());
+        },
+        deleteMovieAPI: (movieID) => {
+            dispatch(actMovieDeleteAPI(movieID))
         }
     }
 };
