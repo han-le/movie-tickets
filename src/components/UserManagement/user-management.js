@@ -23,11 +23,11 @@ class UserManagement extends Component {
         this.openMessage()
         // window.location.replace("/dashboard/user")
     }
-    openMessage = () => {
 
+    openMessage = () => {
         const { errorDelete } = this.props;
         if (errorDelete) {
-            message.error({content:"Không thể xóa người dùng "});
+            message.error({content:"Can not delete this user at the moment"});
         }
     };
 
@@ -81,7 +81,7 @@ class UserManagement extends Component {
                 <Space>
                     <Button shape="circle" style={{ background: "#aff4f9", color: "#128f98", border: "none" }}><i className="fa fa-plus" /></Button>
                     <UserEdit taiKhoan={record.taiKhoan} />
-                    <Button onClick={() => { this.deleteUser(record.taiKhoan) }} shape="circle" style={{ background: "#baf5c0", color: "#09a519", border: "none" }}><i className="fa fa-trash" /></Button>
+                    <Button onClick={() => { this.deleteUser(record.taiKhoan)}} shape="circle" style={{ background: "#baf5c0", color: "#09a519", border: "none" }}><i className="fa fa-trash" /></Button>
                 </Space>
             ),
         },
@@ -89,7 +89,7 @@ class UserManagement extends Component {
 
     render() {
         const loader = this.props.loading;
-        if (loader) { return <Loader /> };
+        if (loader) { return <Loader /> }
         return (
             <div className={"dashboard__content"}>
                 <div className="dashboard__card">

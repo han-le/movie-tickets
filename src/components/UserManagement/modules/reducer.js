@@ -26,10 +26,8 @@ const userListReducer = (state = initialState, action) => {
         case USER_LIST_DELETE_FAILED:
             state.errorDelete = action.payload;
             return { ...state };
-        default:
-            return { ...state }
+        default: return { ...state }
     }
-
 };
 
 export default userListReducer;

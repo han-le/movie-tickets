@@ -9,7 +9,7 @@ export default class CinemaCard extends Component {
 
         return (
             <div className="cinema-list-item">
-                <Link to={"/movie/1365"} className="item__content" >
+                <Link to={`/cinema/${cinema_object.maHeThongRap}`} className="item__content" >
                     <div>
                         <div className="cinema-logo">
                             <img src={cinema_object.logo} alt="cinema-logo"/>

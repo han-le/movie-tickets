@@ -103,6 +103,7 @@ class AddMovie extends Component {
                                 <div className="form-group">
                                     <label htmlFor="hinhAnh">Poster</label>
                                     <input type="file" className="form-control-file" id="" name="hinhAnh" onChange={this.handleOnChange} />
+                                    
                                 </div>
                                 <div className="btn-submit">
                                     <button>Submit</button>

@@ -34,8 +34,6 @@ export const actUserListDeleteAPI = (id) => {
         }).catch((err) => {
             console.log(err);
             dispatch(actUserListDeleteFailed(err))
-
-
         })
     }
 }
