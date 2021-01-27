@@ -2,6 +2,7 @@ let initialState = {
     loading: false,
     data: null,
     error: null,
+    errorMovieDelete: null
 }
 
 const listNowPlayingReducer = (state  = initialState, action) => {
@@ -21,6 +22,9 @@ const listNowPlayingReducer = (state  = initialState, action) => {
             state.data = null;
             state.error = action.payload;
             return {...state};
+        case "listNowPlayingReducer/DELETE_FAILED":
+            state.errorMovieDelete = action.payload;
+            return {...state}
         default: return {...state};
     }
 };
