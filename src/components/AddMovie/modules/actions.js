@@ -12,12 +12,14 @@ export const actAddMovieSuccess = (data) => {
         payload: data
     }
 }
+
 export const actAddMovieFailed = (err) => {
     return {
         type: ADD_MOVIE_FAILED,
         payload: err
     }
 }
+
 export const actAddMovieAPI = (movie) => {
 
     //JSON.parse to convert string to an object
