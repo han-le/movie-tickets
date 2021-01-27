@@ -31,7 +31,6 @@ class AddMovie extends Component {
     //Lay du lieu nguoi dung nhap vao va day vao State
     handleOnChange = (event) => {
         const {name, value} = event.target;
-        console.log([name, value]);
 
         let formVal = {};
         formVal[name] = value;
