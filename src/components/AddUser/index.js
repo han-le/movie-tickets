@@ -36,15 +36,15 @@ class AddUser extends Component {
             hoTen: values.hoTen,
         })
         this.props.addAccount(this.state);
-        this.onFinishFailed()
+        // this.openMessage()
     };
 
-    onFinishFailed = () => {
-        const error = this.props.error;
-        // if (error) {
-            // message.error(error);
-            // console.log("ahihih "+error);
-        // }
+    openMessage = () => {
+        const { errorAdd } = this.props;
+        if (errorAdd) {
+            // message.error({content:"Không thể xóa người dùng "});
+            console.log("hi" + errorAdd);
+        }
     };
 
     render() {
@@ -85,7 +85,14 @@ class AddUser extends Component {
                         <Form.Item name="soDt">
                             <Input placeholder="Enter phone number" />
                         </Form.Item>
-                        <Form.Item name="maLoaiNguoiDung">
+                        <Form.Item
+                            name="maLoaiNguoiDung"
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please choose role',
+                                },
+                            ]}>
                             <Select placeholder="Select Role" allowClear>
                                 <Select.Option value="QuanTri">Quan Tri</Select.Option>
                                 <Select.Option value="KhachHang">Khach Hang</Select.Option>
@@ -105,7 +112,7 @@ class AddUser extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        error: state.addAccountReducer.err,
+        errorAdd: state.addAccountReducer.err,
     };
 };
 

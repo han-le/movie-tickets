@@ -20,10 +20,10 @@ class UserManagement extends Component {
 
     deleteUser = (id) => {
         this.props.deleteUserAPI(id)
-        this.openmessage()
+        this.openMessage()
         // window.location.replace("/dashboard/user")
     }
-    openmessage = () => {
+    openMessage = () => {
 
         const { errorDelete } = this.props;
         if (errorDelete) {

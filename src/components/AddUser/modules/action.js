@@ -1,5 +1,6 @@
 import { ADD_ACCOUNT_REQUEST, ADD_ACCOUNT_SUCCESS, ADD_ACCOUNT_FAILED } from "./constants";
 import Axios from "axios";
+import { Table, Space, Button, message } from 'antd';
 
 
 export const actUserListAddAPI = (account) => {
@@ -19,10 +20,12 @@ export const actUserListAddAPI = (account) => {
             window.history.back()
         }).catch((err) => {
             dispatch(actUserListAddFailed(err));
-            console.log(err);
+            // console.log(err.response.data);
+            message.error({content:"Không thể tạo người dùng "});
         })
     }
 }
+
 
 export const actUserListAddRequest = () => {
     return {
@@ -35,9 +38,9 @@ export const actUserListAddSuccess = (user) => {
         payload: user
     }
 };
-export const actUserListAddFailed = (error) => {
+export const actUserListAddFailed = (err) => {
     return {
         type: ADD_ACCOUNT_FAILED,
-        payload: error
+        payload: err
     }
 };
