@@ -74,7 +74,7 @@ class UserManagement extends Component {
             render: (record) => (
                 <Space>
                     <Button shape="circle" style={{ background: "#aff4f9", color: "#128f98", border: "none" }}><i className="fa fa-plus" /></Button>
-                    <UserEdit />
+                    <UserEdit taiKhoan={record.taiKhoan}/>
                     <Button onClick={() => { this.deleteUser(record.taiKhoan) }} shape="circle" style={{ background: "#baf5c0", color: "#09a519", border: "none" }}><i className="fa fa-trash" /></Button>
                 </Space>
             ),

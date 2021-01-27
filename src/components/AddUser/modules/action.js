@@ -16,10 +16,10 @@ export const actUserListAddAPI = (account) => {
         }).then((result) => {
             dispatch(actUserListAddSuccess(result.data));
             console.log("okay");
+            window.history.back()
         }).catch((err) => {
             dispatch(actUserListAddFailed(err));
-            console.log(" no okay");
-
+            console.log(err);
         })
     }
 }
@@ -35,9 +35,9 @@ export const actUserListAddSuccess = (user) => {
         payload: user
     }
 };
-export const actUserListAddFailed = (err) => {
+export const actUserListAddFailed = (error) => {
     return {
         type: ADD_ACCOUNT_FAILED,
-        payload: err
+        payload: error
     }
 };

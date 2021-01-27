@@ -28,6 +28,7 @@ export const actUserListDeleteAPI = (id) => {
             }
         }).then(() => {
             console.log("success");
+        window.history.go("/dashboard/user")
         }).catch((err) => {
             console.log(err);
         })

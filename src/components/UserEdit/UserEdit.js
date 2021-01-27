@@ -1,11 +1,15 @@
 import React, {Component} from 'react';
-import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { Drawer, Form, Button, Col, Row, Input, Select } from 'antd';
 
 const { Option } = Select;
 
 class UserEdit extends Component {
-    state = { visible: false };
+    constructor(props) {
+        super(props);
+        this.state = {
+          visible: false
+        };
+      }
 
     showDrawer = () => {
         this.setState({
