@@ -15,7 +15,6 @@ class UserManagement extends Component {
     }
 
     componentDidMount() {
-
         this.props.userListAPI();
     }
 
