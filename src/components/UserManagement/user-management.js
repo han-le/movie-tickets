@@ -20,9 +20,16 @@ class UserManagement extends Component {
 
     deleteUser = (id) => {
         this.props.deleteUserAPI(id)
+        this.openmessage()
         // window.location.replace("/dashboard/user")
-
     }
+    openmessage = () => {
+
+        const { errorDelete } = this.props;
+        if (errorDelete) {
+            message.error({content:"Không thể xóa người dùng "});
+        }
+    };
 
     columns = [
         //Column Seq
@@ -73,7 +80,7 @@ class UserManagement extends Component {
             render: (record) => (
                 <Space>
                     <Button shape="circle" style={{ background: "#aff4f9", color: "#128f98", border: "none" }}><i className="fa fa-plus" /></Button>
-                    <UserEdit />
+                    <UserEdit taiKhoan={record.taiKhoan} />
                     <Button onClick={() => { this.deleteUser(record.taiKhoan) }} shape="circle" style={{ background: "#baf5c0", color: "#09a519", border: "none" }}><i className="fa fa-trash" /></Button>
                 </Space>
             ),
@@ -112,6 +119,7 @@ const mapStateToProps = (state) => {
     return {
         loading: state.userListReducer.loading,
         userList: state.userListReducer.data,
+        errorDelete: state.userListReducer.errorDelete
     }
 }
 const mapDispatchToProps = (dispatch) => {

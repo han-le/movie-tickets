@@ -40,10 +40,10 @@ class AddUser extends Component {
     };
 
     onFinishFailed = () => {
-        const { error } = this.props;
+        const error = this.props.error;
         // if (error) {
             // message.error(error);
-            console.log(error);
+            // console.log("ahihih "+error);
         // }
     };
 

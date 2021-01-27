@@ -19,7 +19,7 @@ const rootReducer = combineReducers({
   addUserReducer,
   userListReducer,
   addMovieReducer,
-  addAccountReducer
+  addAccountReducer,
 });
 
 export default rootReducer;

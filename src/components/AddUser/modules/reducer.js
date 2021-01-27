@@ -1,6 +1,6 @@
 import {ADD_ACCOUNT_REQUEST, ADD_ACCOUNT_SUCCESS, ADD_ACCOUNT_FAILED} from "./constants";
 
-const initialState = {
+let initialState = {
     loading: true,
     data: null,
     err: null
@@ -22,6 +22,7 @@ const addAccountReducer = (state = initialState, action) => {
             state.data = null;
             state.err = action.payload;
             return {...state};
+
         default:
             return {...state}
     }
