@@ -6,7 +6,7 @@ export const actCinemaListAPI = () => {
     return (dispatch) => {
         dispatch(actCinemaListRequest());
         Axios({
-            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap",
+            url: "https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap",
             method: "GET"
         })
             .then((response) => {

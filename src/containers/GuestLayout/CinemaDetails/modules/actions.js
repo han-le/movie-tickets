@@ -1,39 +1,39 @@
 import Axios from "axios";
-import {MOVIE_DETAILS_FAILED, MOVIE_DETAILS_PAGE_REQUEST, MOVIE_DETAILS_SUCCESS} from "./constants";
+import {CINEMA_DETAILS_FAILED, CINEMA_DETAILS_PAGE_REQUEST, CINEMA_DETAILS_SUCCESS} from "./constants";
 
 //Goi ham nay trong mapDispatchToProps
-export const actMovieDetailsAPI = (movie_ID) => {
+export const actCinemaDetailsAPI = (movie_ID) => {
     return (dispatch) => {
-        dispatch(actMovieDetailsRequest());
+        dispatch(actCinemaDetailsRequest());
         Axios({
             url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${movie_ID}`,
             method: "GET"
         })
             .then((response) => {
-                dispatch(actMovieDetailsSuccess(response.data));
+                dispatch(actCinemaDetailsSuccess(response.data));
             })
             .catch((err)=>{
-                dispatch(actMovieDetailsFailed(err));
+                dispatch(actCinemaDetailsFailed(err));
             })
     }
 };
 
-export const actMovieDetailsRequest = () => {
+export const actCinemaDetailsRequest = () => {
     return {
-        type: MOVIE_DETAILS_PAGE_REQUEST
+        type: CINEMA_DETAILS_PAGE_REQUEST
     }
 };
 
-export const actMovieDetailsSuccess = (movie_details_data) => {
+export const actCinemaDetailsSuccess = (movie_details_data) => {
     return {
-        type: MOVIE_DETAILS_SUCCESS,
+        type: CINEMA_DETAILS_SUCCESS,
         payload: movie_details_data
     }
 };
 
-export const actMovieDetailsFailed = (err) => {
+export const actCinemaDetailsFailed = (err) => {
     return {
-        type: MOVIE_DETAILS_FAILED,
+        type: CINEMA_DETAILS_FAILED,
         payload: err
     }
 };
