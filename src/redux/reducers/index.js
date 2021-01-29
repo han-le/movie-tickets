@@ -8,6 +8,8 @@ import addUserReducer from "../../containers/GuestLayout/UserPage/modules/reduce
 import userListReducer from "../../components/UserManagement/modules/reducer";
 import addMovieReducer from "../../components/AddMovie/modules/reducers";
 import addAccountReducer from "../../components/AddUser/modules/reducer"
+import updateAccountReducer from "../../components/UserEdit/modules/reducer"
+
 
 //Create rootReducer to use in store. This manages CHILD REDUCERS in the project
 const rootReducer = combineReducers({
@@ -20,6 +22,7 @@ const rootReducer = combineReducers({
   userListReducer,
   addMovieReducer,
   addAccountReducer,
+  updateAccountReducer
 });
 
 export default rootReducer;

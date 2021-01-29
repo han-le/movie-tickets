@@ -1,15 +1,38 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Drawer, Form, Button, Col, Row, Input, Select } from 'antd';
-
+import { actUserListUpdateAPI } from "./modules/action";
+import { connect } from "react-redux";
 const { Option } = Select;
 
 class UserEdit extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
-          visible: false
+            taiKhoan: "",
+            matKhau: "",
+            email: "",
+            soDt: "",
+            maNhom: "",
+            maLoaiNguoiDung: "",
+            hoTen: "",
+            visible: false
         };
-      }
+    }
+    onFinish = (values) => {
+        this.onClose()
+        this.setState({
+            taiKhoan: values.taiKhoan,
+            matKhau: values.matKhau,
+            email: values.email,
+            soDt: values.soDt,
+            maNhom: "GP07",
+            maLoaiNguoiDung: values.maLoaiNguoiDung,
+            hoTen: values.hoTen,
+        })
+        console.log(this.state);
+        this.props.updateAccount(this.state);
+    };
 
     showDrawer = () => {
         this.setState({
@@ -26,10 +49,11 @@ class UserEdit extends Component {
     render() {
         return (
             <>
-                <Button shape="circle" style={{background: "#e3c7ff", color: "#6f0dd0", border: "none"}} onClick={this.showDrawer}>
+                <Button shape="circle" style={{ background: "#e3c7ff", color: "#6f0dd0", border: "none" }} onClick={this.showDrawer}>
                     <i className="fas fa-pen" />
                 </Button>
                 <Drawer
+
                     title="Update User Information"
                     width={720}
                     onClose={this.onClose}
@@ -41,69 +65,94 @@ class UserEdit extends Component {
                                 textAlign: 'right',
                             }}
                         >
-                            <Button onClick={this.onClose} style={{ marginRight: 8 }}>
-                                Cancel
-                            </Button>
-                            <Button onClick={this.onClose} type="primary">
-                                Submit
-                            </Button>
+
                         </div>
                     }
                 >
-                    <Form layout="vertical" hideRequiredMark>
+                    <Form layout="vertical" hideRequiredMark onFinish={(values) => { this.onFinish(values) }} on>
                         <Row gutter={16}>
                             <Col span={12}>
                                 <Form.Item
-                                    name="name"
+                                    name="taiKhoan"
                                     label="Username"
+                                    initialValue={this.props.account.taiKhoan}
                                     rules={[{ required: true, message: 'Please enter user name' }]}
                                 >
-                                    <Input placeholder="Please enter user name" />
+                                    <Input placeholder="Please enter user name" defaultValue={this.props.account.taiKhoan} />
                                 </Form.Item>
                             </Col>
                             <Col span={12}>
                                 <Form.Item
-                                    name="url"
+                                    name="hoTen"
                                     label="Name"
+                                    initialValue={this.props.account.hoTen}
                                     rules={[{ required: true, message: 'Please enter url' }]}
                                 >
-                                    <Input placeholder="Please enter user name" />
+                                    <Input placeholder="Please enter user name" defaultValue={this.props.account.hoTen} />
                                 </Form.Item>
                             </Col>
                         </Row>
                         <Row gutter={16}>
                             <Col span={12}>
                                 <Form.Item
-                                    name="owner"
+                                    name="email"
                                     label="Email"
+                                    initialValue={this.props.account.email}
                                     rules={[{ required: true, message: 'Please select an owner' }]}
                                 >
-                                    <Input placeholder="Please enter user name" />
+                                    <Input placeholder="Please enter user name" defaultValue={this.props.account.email} />
                                 </Form.Item>
                             </Col>
                             <Col span={12}>
                                 <Form.Item
-                                    name="type"
+                                    name="soDt"
                                     label="Phone number"
+                                    initialValue={this.props.account.soDt}
                                     rules={[{ required: true, message: 'Please choose the type' }]}
                                 >
-                                    <Input placeholder="Please enter user name" />
+                                    <Input placeholder="Please enter user name" defaultValue={this.props.account.soDt} />
                                 </Form.Item>
                             </Col>
                         </Row>
                         <Row gutter={16}>
                             <Col span={12}>
                                 <Form.Item
-                                    name="approver"
+                                    name="matKhau"
                                     label="Password"
+                                    initialValue={this.props.account.matKhau}
                                     rules={[{ required: true, message: 'Please choose the approver' }]}
                                 >
-                                    <Input placeholder="Please enter user name" />
+                                    <Input placeholder="Please enter user name" defaultValue={this.props.account.matKhau} />
                                 </Form.Item>
                             </Col>
-
+                            <Col span={12}>
+                                <Form.Item
+                                    name="maLoaiNguoiDung"
+                                    label="Role"
+                                    initialValue={this.props.account.maLoaiNguoiDung}
+                                    rules={[
+                                        {
+                                            required: true,
+                                            message: 'Please choose role',
+                                        },
+                                    ]}>
+                                    <Select placeholder="Select Role" defaultValue={this.props.account.maLoaiNguoiDung} allowClear>
+                                        <Select.Option value="QuanTri">Quan Tri</Select.Option>
+                                        <Select.Option value="KhachHang">Khach Hang</Select.Option>
+                                    </Select>
+                                </Form.Item>
+                            </Col>
                         </Row>
-
+                        <Row>
+                            <Form.Item>
+                                <Button onClick={this.onClose} style={{ marginRight: 8 }}>
+                                    Cancel
+                            </Button>
+                                <Button type="primary" htmlType="submit">
+                                    Submit
+                            </Button>
+                            </Form.Item>
+                        </Row>
                     </Form>
                 </Drawer>
             </>
@@ -111,4 +160,18 @@ class UserEdit extends Component {
     }
 }
 
-export default UserEdit;
+const mapStateToProps = (state) => {
+    return {
+        errorUpdate: state.updateAccountReducer.err,
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateAccount: (user) => {
+            dispatch(actUserListUpdateAPI(user));
+        },
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserEdit);
