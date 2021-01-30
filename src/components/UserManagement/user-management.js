@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Table, Space, Button, message } from 'antd';
-import 'antd/dist/antd.css';
 import Search from "../Search/search";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
