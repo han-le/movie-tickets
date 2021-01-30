@@ -65,7 +65,6 @@ class UserEdit extends Component {
                                 textAlign: 'right',
                             }}
                         >
-
                         </div>
                     }
                 >

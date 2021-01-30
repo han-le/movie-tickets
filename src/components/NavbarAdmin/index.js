@@ -12,7 +12,7 @@ export default class NavbarAdmin extends Component {
     if (localStorage.getItem("UserName") === null) {
       return (
         <Link to={"/login"}>
-          <div className="btn btn-danger mr-2">Login</div>
+          <div className="btn mr-2">Log IN djkfhkdjhgfdj</div>
         </Link>
       );
     } else {
@@ -59,9 +59,7 @@ export default class NavbarAdmin extends Component {
                         {this.renderUserName()}
                     </ul>
                 </div>
-
             </nav>
-
         </div>
     );
   }
