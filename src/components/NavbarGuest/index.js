@@ -12,7 +12,7 @@ export default class NavbarGuest extends Component {
     if (localStorage.getItem("UserName") === null) {
       return (
         <Link to={"/login"}>
-          <div className="btn btn-danger mr-2">Login</div>
+          <div className="btn mr-2" id="sign-in-btn">SIGN IN</div>
         </Link>
       );
     } else {
