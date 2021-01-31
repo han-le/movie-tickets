@@ -33,8 +33,8 @@ class ThongTinDatGhe extends Component {
               {this.props.danhSachGheDangDat.map((gheDangDat, index) => {
                 return (
                   <tr key={index}>
-                    <td>{gheDangDat.soGhe}</td>
-                    <td>{gheDangDat.gia}</td>
+                    <td>{gheDangDat.tenGhe}</td>
+                    <td>{gheDangDat.giaVe}</td>
                   </tr>
                 );
               })}
@@ -47,7 +47,7 @@ class ThongTinDatGhe extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    danhSachGheDangDat: state.addGheReducer.danhSachGheDangDat,
+    danhSachGheDangDat: state.addGheReducer.danhSachGheDangChon,
   };
 };
 

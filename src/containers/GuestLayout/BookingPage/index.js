@@ -1,22 +1,30 @@
 import { red } from "@material-ui/core/colors";
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { actAddGheApi } from "./modules/action";
 import ThongTinDatGhe from "../../../components/ThongTinDatGhe";
 import danhSachGhe from "../../../data/danhSachGhe.json";
-import HangGhe from "../../../components/HangGhe";
+import HangGhe from "../../../components/Ghe";
 import "./css/BaiTapBookingTicket.css";
+import { Fragment } from "react";
+import Ghe from "../../../components/Ghe";
 
-export default class index extends Component {
-  renderHangGhe = () => {
-    return danhSachGhe.map((hangGhe,index) => {
+class BookingPage extends Component {
+  componentDidMount() {
+    this.props.getDetailMovie();
+  }s
+
+  renderHangGhe2 = (danhSachGheDangDat) => {
+    return danhSachGheDangDat.danhSachGhe?.map((item, index) => {
       return (
-        <div key={index}>
-          <HangGhe hangGhe={hangGhe} thuTuHang={index}/>
-        </div>
+        <Fragment key={index}>
+          <Ghe ghe={item} />
+          { ((index + 1) % 16 === 0) && <br/>}
+        </Fragment>
       );
-    });
-  };
 
+    })
+  }
   render() {
     return (
       <div
@@ -38,12 +46,12 @@ export default class index extends Component {
                 <div className="screen"></div>
               </div>
               <div className="text-light mt-3" style={{ fontSize: "20px" }}>
-                Màng hình
-                {this.renderHangGhe()}
+                <h2>Màng hình</h2>
+                {this.renderHangGhe2(this.props.danhSachGheDangDat)}
               </div>
             </div>
-            
-            <div className="col-4 text-center  ">
+
+            <div className="col-4 text-center   ">
               <h1 className="text-warning font-weight-bolder display-4 mt-5">
                 DANH SÁCH CHỌN
               </h1>
@@ -55,3 +63,18 @@ export default class index extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    danhSachGheDangDat: state.addGheReducer.danhSachGheDangDat
+  };
+};
+
+const mapDisptachToProps = (dispatch) => {
+  return {
+    getDetailMovie: (id) => {
+      dispatch(actAddGheApi(id));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDisptachToProps)(BookingPage);
