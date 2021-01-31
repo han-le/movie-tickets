@@ -1,5 +1,6 @@
 import {ADD_MOVIE_FAILED, ADD_MOVIE_REQUEST, ADD_MOVIE_SUCCESS} from "./constants";
 import Axios from "axios";
+import formatDate from '../../GlobalFunctions/GlobalFunctions';
 
 export const actAddMovieRequest = () => {
     return {
@@ -24,24 +25,41 @@ export const actAddMovieAPI = (movie) => {
 
     //JSON.parse to convert string to an object
     let accessToken = JSON.parse(localStorage.getItem("UserAdmin")).accessToken;
+    let form = new FormData();
 
-    let testObject = Object.assign({}, movie, {
-        "ngayKhoiChieu": "02/02/2021"
-    })
+    let formData = Object.keys(movie).reduce((carry, key) => {
+        let data = movie[key];
+
+        if (key === 'ngayKhoiChieu') {
+            data = formatDate(data);
+        }
+
+        carry.append(key,data);
+
+        return carry;
+    }, new FormData())
+
+
+    form.append("", "")
 
     if (localStorage.getItem("UserAdmin")) {
         return (dispatch) => {
             dispatch(actAddMovieRequest());
             Axios({
-                url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhim",
+                url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh",
                 method: "POST",
-                data: testObject,
+                data: formData,
                 headers: {
-                    Authorization:`Bearer ${accessToken}`
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization':`Bearer ${accessToken}`
                 }
             })
                 .then((result) => {
                     dispatch(actAddMovieSuccess(result.data))
+                    return result.data;
+                })
+                .then((data) => {
+                    window.location = '/dashboard/movie';
                 })
                 .catch((err) => {
                     dispatch(actAddMovieFailed(err))

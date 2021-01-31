@@ -28,4 +28,6 @@ const addMovieReducer = (state = initialState, action) => {
     }
 }
 
+
+
 export default addMovieReducer;
