@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import {Button} from "antd";
 import {actAddMovieAPI} from "./modules/actions";
 import {connect} from "react-redux";
-import { useHistory } from "react-router-dom";
 
 class AddMovie extends Component {
 
-    //Lien quan toi form phai co ham khoi tao
     constructor(props) {
         super(props);
         this.state = {
@@ -100,8 +97,8 @@ class AddMovie extends Component {
                                     <input type="file" className="form-control-file" id="" name="hinhAnh" onChange={this.handleFileChange} />
                                 </div>
                                 <div className="btn-submit">
-                                    <button>Submit</button>
-                                    {/*<Button type="primary">Submit</Button>*/}
+                                    <button className={"btn btn-primary"}>Submit</button>
+
                                 </div>
                             </form>
                         {/*=======Form ======= */}
@@ -113,7 +110,6 @@ class AddMovie extends Component {
     }
 }
 
-//Lay du lieu tren state ve
 const mapStateToProps = (state) => {
     return {
         loading: state.addMovieReducer.loading,

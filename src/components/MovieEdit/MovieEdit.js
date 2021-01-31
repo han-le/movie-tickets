@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Drawer, Form, Button, Col, Row, Input, Select, Space} from 'antd';
+import {Drawer, Form, Button, Col, Row, Input,} from 'antd';
 import { actMovieUpdateAPI } from "./modules/action";
 import { connect } from "react-redux";
 import formatDate from "../GlobalFunctions/GlobalFunctions";
@@ -22,6 +22,16 @@ class MovieEdit extends Component {
             visible: false
         };
     }
+
+    //Upload image
+    handleFileChange = (e) => {
+        const {name, files} = e.target;
+        let formVal = {};
+        formVal[name] = files[0];
+        let obj = Object.assign({}, this.state, formVal);
+        this.setState(obj);
+    }
+
     onFinish = (values) => {
         this.onClose()
         this.setState({
@@ -35,18 +45,14 @@ class MovieEdit extends Component {
             ngayKhoiChieu: formatDate(values.ngayKhoiChieu),
             danhGia: values.danhGia,
         })
-        console.log("this.state =")
-        console.log(this.state);
-        let a = this.props.updateMovie(this.state);
-        console.log("this.props.updateMovie(this.state) =")
-        console.log(a)
+        this.props.updateMovie(this.state);
     };
 
     showDrawer = () => {
         this.setState({
             visible: true,
         });
-        console.log(this.state)
+        console.log(this.state);
     };
 
     onClose = () => {
@@ -61,19 +67,13 @@ class MovieEdit extends Component {
                 <Button shape="circle" style={{background: "#e3c7ff", color: "#6f0dd0", border: "none"}} onClick={this.showDrawer}>
                     <i className="fas fa-pen" /></Button>
                 <Drawer
-
                     title="Update Movie Information"
                     width={720}
                     onClose={this.onClose}
                     visible={this.state.visible}
                     bodyStyle={{ paddingBottom: 80 }}
                     footer={
-                        <div
-                            style={{
-                                textAlign: 'right',
-                            }}
-                        >
-                        </div>
+                        <div style={{textAlign: 'right'}}/>
                     }
                 >
                     <Form layout="vertical" hideRequiredMark onFinish={(values) => { this.onFinish(values) }} on>
@@ -110,14 +110,10 @@ class MovieEdit extends Component {
                                 </Form.Item>
                             </Col>
                             <Col span={12}>
-                                <Form.Item
-                                    name="hinhAnh"
-                                    label="Poster"
-                                    initialValue={this.props.account.hinhAnh}
-                                    rules={[{ required: true, message: 'Please fulfill' }]}
-                                >
-                                    <Input defaultValue={this.props.account.hinhAnh} />
-                                </Form.Item>
+                                <div className="form-group">
+                                    <label htmlFor="hinhAnh">Poster</label>
+                                    <input type="file" className="form-control-file" name="hinhAnh" onChange={this.handleFileChange} />
+                                </div>
                             </Col>
                         </Row>
                         <Row gutter={16}>
@@ -135,7 +131,7 @@ class MovieEdit extends Component {
                                 <Form.Item
                                     name="ngayKhoiChieu"
                                     label="Released date"
-                                    initialValue={this.props.account.ngayKhoiChieu}
+                                    initialValue={formatDate(this.props.account.ngayKhoiChieu)}
                                     rules={[{ required: true, message: 'Please fulfill' }]}
                                 >
                                     <Input defaultValue={this.props.account.ngayKhoiChieu} />
@@ -154,7 +150,6 @@ class MovieEdit extends Component {
                                     name="maPhim"
                                     label="Movie ID"
                                     initialValue={this.props.account.maPhim}
-                                    rules={[{ required: true, message: 'Please fulfill' }]}
                                 >
                                     <Input defaultValue={this.props.account.maPhim} disabled={true} />
                                 </Form.Item>
@@ -186,7 +181,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         updateMovie: (movie) => {
-            dispatch(actMovieUpdateAPI(movie));
+            return dispatch(actMovieUpdateAPI(movie));
         },
     };
 };
