@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Button} from "antd";
 import {actAddMovieAPI} from "./modules/actions";
 import {connect} from "react-redux";
+import { useHistory } from "react-router-dom";
 
 class AddMovie extends Component {
 
@@ -11,21 +12,19 @@ class AddMovie extends Component {
         this.state = {
             // "maPhim": 0,
             "tenPhim": "",
-            "biDanh": "",
+            // "biDanh": "",
             "trailer": "",
             "hinhAnh": "",
             "moTa": "",
             "maNhom": "GP07",
-            "ngayKhoiChieu": "25-01-2021",
-            "danhGia": 9
+            "ngayKhoiChieu": "",
+            "danhGia": ""
         }
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        alert("Submitted");
         this.props.addMovie(this.state);
-        console.log(this.props.addMovie(this.state))
     }
 
     //Lay du lieu nguoi dung nhap vao va day vao State
@@ -34,6 +33,17 @@ class AddMovie extends Component {
 
         let formVal = {};
         formVal[name] = value;
+
+        let obj = Object.assign({}, this.state, formVal);
+
+        this.setState(obj);
+    }
+
+    handleFileChange = (e) => {
+        const {name, files} = e.target;
+
+        let formVal = {};
+        formVal[name] = files[0];
 
         let obj = Object.assign({}, this.state, formVal);
 
@@ -63,12 +73,12 @@ class AddMovie extends Component {
                                 </div>
                                 <div className="form-row">
                                     <div className="form-group col-md-6">
-                                        <label htmlFor="biDanh">Code</label>
-                                        <input type="text" className="form-control" id="" name="biDanh" onChange={this.handleOnChange} />
+                                        <label htmlFor="danhGia">Rating</label>
+                                        <input type="text" className="form-control" name="danhGia" onChange={this.handleOnChange} />
                                     </div>
                                     <div className="form-group col-md-6">
                                         <label htmlFor="trailer">Trailer's link</label>
-                                        <input type="text" className="form-control" id="" name="trailer" onChange={this.handleOnChange} />
+                                        <input type="text" className="form-control" name="trailer" onChange={this.handleOnChange} />
                                     </div>
                                 </div>
 
@@ -77,21 +87,6 @@ class AddMovie extends Component {
                                     <div className="form-group col-md-4">
                                         <label htmlFor="ngayKhoiChieu">Released date</label>
                                         <input type="date" className="form-control" id="" name="ngayKhoiChieu" onChange={this.handleOnChange} />
-                                    </div>
-                                    <div className="form-group col-md-4">
-                                        <label htmlFor="exampleFormControlSelect1">Rating</label>
-                                        <select className="form-control" id="" >
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                            <option>5</option>
-                                            <option>6</option>
-                                            <option>7</option>
-                                            <option>8</option>
-                                            <option>9</option>
-                                            <option>10</option>
-                                        </select>
                                     </div>
                                 </div>
 
@@ -102,8 +97,7 @@ class AddMovie extends Component {
 
                                 <div className="form-group">
                                     <label htmlFor="hinhAnh">Poster</label>
-                                    <input type="file" className="form-control-file" id="" name="hinhAnh" onChange={this.handleOnChange} />
-                                    
+                                    <input type="file" className="form-control-file" id="" name="hinhAnh" onChange={this.handleFileChange} />
                                 </div>
                                 <div className="btn-submit">
                                     <button>Submit</button>
@@ -130,7 +124,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         addMovie: (movie) => {
-            dispatch(actAddMovieAPI(movie))
+            return dispatch(actAddMovieAPI(movie))
         }
     }
 }
