@@ -110,12 +110,7 @@ const mapDispatchToProps = (dispatch) => {
         getMovieDetails: (movie_ID) => {
             dispatch(actMovieDetailsAPI(movie_ID))
         },
-
     }
 }
-
-// handleOnClick() {
-//     this.props.addThing();
-// };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MovieBookingDetails);

@@ -3,34 +3,23 @@ import {Drawer, Form, Button, Col, Row, Input,} from 'antd';
 import { actMovieUpdateAPI } from "./modules/action";
 import { connect } from "react-redux";
 import formatDate from "../GlobalFunctions/GlobalFunctions";
+import moment from "moment";
 
 
 class MovieEdit extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            // maPhim: "",
-            tenPhim: "",
-            // biDanh: "",
-            trailer: "",
-            hinhAnh: "",
-            moTa: "",
-            maNhom: "GP07",
-            ngayKhoiChieu: "",
-            danhGia: "",
-            visible: false
-        };
+        this.state = Object.assign({}, this.props.account, {
+            visible: false,
+            ngayKhoiChieu: moment(this.props.account.ngayKhoiChieu).format('YYYY-MM-DD')
+        });
     }
 
     //Submit button (Edit Movie)
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log(JSON.stringify({name: "Old form: ", value: this.props.account}));
-        console.log(JSON.stringify({name: "New form: ", value: this.state}));
-
         let make = Object.assign({}, this.props.account, this.state);
-        console.log(JSON.stringify({name: "Merged Form: ", value: make}));
         this.props.updateMovie(make);
     }
 
@@ -113,31 +102,31 @@ class MovieEdit extends Component {
                                         <div className="form-row">
                                             <div className="form-group col-md-6">
                                                 <label htmlFor="tenPhim">Name</label>
-                                                <input type="text" className="form-control" defaultValue={objMovie.tenPhim} name="tenPhim" onChange={this.handleOnChange}/>
+                                                <input type="text" className="form-control" value={this.state.tenPhim} name="tenPhim" onChange={this.handleOnChange}/>
                                             </div>
                                         </div>
 
                                         <div className="form-row">
                                             <div className="form-group col-md-6">
                                                 <label htmlFor="danhGia">Rating</label>
-                                                <input type="text" className="form-control" defaultValue={objMovie.danhGia} name="danhGia" onChange={this.handleOnChange} />
+                                                <input type="text" className="form-control" value={this.state.danhGia} name="danhGia" onChange={this.handleOnChange} />
                                             </div>
                                             <div className="form-group col-md-6">
                                                 <label htmlFor="trailer">Trailer's link</label>
-                                                <input type="text" className="form-control" defaultValue={objMovie.trailer} name="trailer" onChange={this.handleOnChange} />
+                                                <input type="text" className="form-control" value={this.state.trailer} name="trailer" onChange={this.handleOnChange} />
                                             </div>
                                         </div>
 
                                         <div className="form-row">
                                             <div className="form-group col-md-4">
                                                 <label htmlFor="ngayKhoiChieu">Released date</label>
-                                                <input type="date" className="form-control" defaultValue={objMovie.ngayKhoiChieu} name="ngayKhoiChieu" onChange={this.handleOnChange} />
+                                                <input type="date" className="form-control" value={this.state.ngayKhoiChieu} name="ngayKhoiChieu" onChange={this.handleOnChange} />
                                             </div>
                                         </div>
 
                                         <div className="form-group">
                                             <label htmlFor="moTa">Description</label>
-                                            <textarea className="form-control" defaultValue={objMovie.moTa} rows="3" name="moTa" onChange={this.handleOnChange} />
+                                            <textarea className="form-control" value={this.state.moTa} rows="3" name="moTa" onChange={this.handleOnChange} />
                                         </div>
 
                                         <div className="form-group">

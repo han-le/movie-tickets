@@ -1,8 +1,22 @@
 import React, {Component} from 'react';
 import {Button, Col, Row, Card } from 'antd';
 import "./user-profile.css";
+import {connect} from "react-redux";
+import {actUserInfoAPI} from "./modules/actions";
 
 class UserProfile extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        const username = localStorage.getItem("User").taiKhoan;
+        console.log("User's username")
+        console.log(username);
+        const usernameAdmin = localStorage.getItem("UserAdmin").taiKhoan;
+        console.log("Admin's username")
+        console.log(usernameAdmin);
+    }
 
     render() {
         return (
@@ -52,4 +66,19 @@ class UserProfile extends Component {
     }
 }
 
-export default UserProfile;
+const mapStateToProps = (state) => {
+    return {
+        userInfo: state.userInfoReducer.data,
+        loading: state.userInfoReducer.loading
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getUserInfo: (username) => {
+            dispatch(actUserInfoAPI(username))
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserProfile);
