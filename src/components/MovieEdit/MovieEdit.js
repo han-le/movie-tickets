@@ -144,10 +144,6 @@ class MovieEdit extends Component {
                     </div>
                 </Drawer>
             </div>
-
-
-
-
         );
     }
 }
