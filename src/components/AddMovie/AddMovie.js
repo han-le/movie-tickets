@@ -19,12 +19,13 @@ class AddMovie extends Component {
         }
     }
 
+    //Submit button (Add Movie)
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.addMovie(this.state);
     }
 
-    //Lay du lieu nguoi dung nhap vao va day vao State
+    //Get input from user => set State
     handleOnChange = (event) => {
         const {name, value} = event.target;
 
@@ -36,6 +37,7 @@ class AddMovie extends Component {
         this.setState(obj);
     }
 
+    //Upload image
     handleFileChange = (e) => {
         const {name, files} = e.target;
 

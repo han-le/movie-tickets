@@ -35,7 +35,7 @@ export const actMovieUpdateAPI = (movie) => {
 
                 window.history.go("/dashboard/movie");
                 console.log(result.data);
-                alert("Updated successfully");
+                // alert("Updated successfully");
             }).catch((err) => {
                 // console.log(err.response.data);
                 message.error({content:"Sorry, can not update this movie"});
