@@ -5,6 +5,8 @@ import {Link} from "react-router-dom";
 import {actMovieDeleteAPI, actNowPlayingMovieAPI} from "../../containers/GuestLayout/HomePage/modules/actions";
 import { connect } from "react-redux";
 import Loading from "../Loader";
+import MovieEdit from "../MovieEdit/MovieEdit";
+import formatDate from "../GlobalFunctions/GlobalFunctions";
 
 
 class MovieManagement extends Component {
@@ -29,12 +31,18 @@ class MovieManagement extends Component {
         }
     }
 
+    trailerModal = () => {
+        return (
+            <div></div>
+        )
+    }
+
     columns = [
         {
-            title: 'Poster',
+            title: '',
             key: 'hinhAnh',
             dataIndex: 'hinhAnh',
-            render:  (image) => <img src={image} width={45} height={45} alt="poster" />
+            render:  (image) => <img src={image} width={45} height={45} style={{borderRadius: '50%'}} alt="poster" />
         },
         {
             title: 'Title',
@@ -60,9 +68,9 @@ class MovieManagement extends Component {
             key: 'moTa',
         },
         {
-            title: 'Released date',
+            title: 'Released',
             dataIndex: 'ngayKhoiChieu',
-            key: 'ngayKhoiChieu',
+            render: (date) => <span>{formatDate(date)}</span>
         },
         {
             title: 'Ratings',
@@ -77,8 +85,9 @@ class MovieManagement extends Component {
             render: (record) => (
                 <Space>
                     <Button shape="circle" style={{background: "#aff4f9", color: "#128f98", border: "none"}}><i className="fa fa-plus" /></Button>
-                    <Button shape="circle" style={{background: "#e3c7ff", color: "#6f0dd0", border: "none"}}><i className="fas fa-pen" /></Button>
-                    <Button shape="circle" style={{background: "#baf5c0", color: "#09a519", border: "none"}} onClick={() => {this.deleteMovie(record.maPhim)}}>
+                    <MovieEdit account={record}/>
+                    <Button shape="circle" style={{background: "#baf5c0", color: "#09a519", border: "none"}}
+                            onClick={() => {this.deleteMovie(record.maPhim)}}>
                         <i className="fa fa-trash" />
                     </Button>
                 </Space>

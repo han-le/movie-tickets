@@ -16,11 +16,7 @@ class MovieBookingDetails extends Component {
 
         //Goi ham lay thong tin phim, truyen vao maPhim
         const movie_ID = this.props.match.params.id;
-        //TODO: Goi API
         this.props.getMovieDetails(movie_ID);
-        console.log("movie ID:")
-        console.log(movie_ID);
-        //TODO: Lay props o tren de render ra duoi day
     }
 
     renderMovieDetails = () => {

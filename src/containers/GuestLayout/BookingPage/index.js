@@ -12,19 +12,18 @@ import Ghe from "../../../components/Ghe";
 class BookingPage extends Component {
   componentDidMount() {
     this.props.getDetailMovie();
-  }s
+  }
 
   renderHangGhe2 = (danhSachGheDangDat) => {
     return danhSachGheDangDat.danhSachGhe?.map((item, index) => {
       return (
         <Fragment key={index}>
           <Ghe ghe={item} />
-          { ((index + 1) % 16 === 0) && <br/>}
+          {(index + 1) % 16 === 0 && <br />}
         </Fragment>
       );
-
-    })
-  }
+    });
+  };
   render() {
     return (
       <div
@@ -46,15 +45,16 @@ class BookingPage extends Component {
                 <div className="screen"></div>
               </div>
               <div className="text-light mt-3" style={{ fontSize: "20px" }}>
-                <h2>Màng hình</h2>
+                <h2>Màn hình</h2>
                 {this.renderHangGhe2(this.props.danhSachGheDangDat)}
               </div>
             </div>
 
             <div className="col-4 text-center   ">
-              <h1 className="text-warning font-weight-bolder display-4 mt-5">
-                DANH SÁCH CHỌN
-              </h1>
+              <h3>{this.props.thongTinPhim.tenPhim}</h3>
+              <h3>{this.props.thongTinPhim.tenCumRap}</h3>
+              <h3>{this.props.thongTinPhim.ngayChieu}</h3>
+              <h3>{this.props.thongTinPhim.gioChieu}</h3>
               <ThongTinDatGhe />
             </div>
           </div>
@@ -65,7 +65,8 @@ class BookingPage extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    danhSachGheDangDat: state.addGheReducer.danhSachGheDangDat
+    danhSachGheDangDat: state.addGheReducer.danhSachGheDangDat,
+    thongTinPhim: state.addGheReducer.thongTinPhim,
   };
 };
 

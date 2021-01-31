@@ -1,26 +1,18 @@
 import React, {Component} from 'react';
 import "./cinema-details.css";
 import FooterGuest from "../../../components/FooterGuest";
-import TrailerModal from "../../../components/TrailerModal/trailer-modal";
 import {connect} from "react-redux";
-import {actMovieDetailsAPI} from "./modules/actions";
+import {actCinemaDetailsAPI, actMovieDetailsAPI} from "./modules/actions";
 import Loader from "../../../components/Loader";
 import ShowTime from "../HomePage/components/ShowTime";
 
 class CinemaDetails extends Component {
 
     componentDidMount() {
-        console.log("I am DidMount in Movie Booking Page. My props have");
-        //dispatch the action to get the movie, pass the id to the action, id comes from <Link>
+        console.log("I am DidMount in Cinema Details Page");
         console.log(this.props);
-
-        //Goi ham lay thong tin phim, truyen vao maPhim
-        const movie_ID = this.props.match.params.id;
-        //TODO: Goi API
-        this.props.getMovieDetails(movie_ID);
-        console.log("movie ID:")
-        console.log(movie_ID);
-        //TODO: Lay props o tren de render ra duoi day
+        const cinema_ID = this.props.match.params.id;
+        this.props.getCinemaDetails(cinema_ID);
     }
 
     renderCinemaDetails = () => {
@@ -37,7 +29,6 @@ class CinemaDetails extends Component {
 
             return (
                 <div className="header container-fluid theme-background">
-                    <h1>dsgdgfdgfdg</h1>
                     <div className="wrap">
                         <div className="row movie-info">
                             <div className="col-md-4 movie-left">
@@ -66,12 +57,11 @@ class CinemaDetails extends Component {
 
 
     render() {
-        console.log("I am in render function of Movie Booking Page")
-        console.log("Props in RENDER have")
+        console.log("Cinema Details Page props:")
         console.log(this.props);
 
         const loader = this.props.loading;
-        if (loader) { return <Loader /> };
+        if (loader) { return <Loader /> }
 
         return (
             <div className="movie-booking-page">
@@ -104,8 +94,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getMovieDetails: (movie_ID) => {
-            dispatch(actMovieDetailsAPI(movie_ID))
+        getCinemaDetails: (cinema_ID) => {
+            dispatch(actCinemaDetailsAPI(cinema_ID))
         },
 
     }

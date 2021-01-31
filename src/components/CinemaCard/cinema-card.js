@@ -5,11 +5,12 @@ import {Link} from "react-router-dom";
 export default class CinemaCard extends Component {
 
     render() {
+        console.log("CINEMA CARD =====================")
         const {cinema_object} = this.props;
 
         return (
             <div className="cinema-list-item">
-                <Link to={`/cinema/${cinema_object.maHeThongRap}`} className="item__content" >
+                <Link to={`/under-construction`} className="item__content" >
                     <div>
                         <div className="cinema-logo">
                             <img src={cinema_object.logo} alt="cinema-logo"/>

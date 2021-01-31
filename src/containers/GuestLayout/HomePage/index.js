@@ -6,11 +6,11 @@ import BannerCarousel from "../../../components/BannerCarousel";
 import Loader from "../../../components/Loader";
 import FooterGuest from "../../../components/FooterGuest";
 import {actNowPlayingMovieAPI} from "./modules/actions";
-import MovieCard from "../../../components/MovieCard";
 import {connect} from "react-redux";
 import News from "../../../components/News/news";
 
 import ShowTime from './components/ShowTime'
+import TrendingList from "../../../components/TrendingList/TrendingList";
 
 
 
@@ -31,15 +31,6 @@ class HomePage extends Component {
         return <CarouselMovie itemsToShow={nowPlayingList}/>
     };
 
-    //Khong biet cai han nay dung o dau?
-    // renderMovieCard = () => {
-    //     const nowPlayingList = this.props.nowPlayingList;
-    //     if (nowPlayingList && nowPlayingList.length > 0) {
-    //         return nowPlayingList.map((movieObj) => {
-    //             return <MovieCard movieObj={movieObj}/>;
-    //         });
-    //     }
-    // };
 
     renderCinemaCarousel = () => {
         return <CarouselCinema /> ;
@@ -71,7 +62,7 @@ class HomePage extends Component {
                         <img className="section__icon" src="https://www.flaticon.com/svg/static/icons/svg/1784/1784614.svg" alt="trending-icon"/>
                         <h3 className="section__title">Trending</h3>
                     </div>
-                    {this.renderCarousel()}
+                    <TrendingList />
                 </div>
                 {/* ========== /3- Trending ========== */}
 

@@ -1,6 +1,10 @@
-import { GET_GHE_REQUEST, GET_GHE_SUCCESS, GET_GHE_FAILED, CHANGE_SELECT_GHE } from "./constant";
+import {
+  GET_GHE_REQUEST,
+  GET_GHE_SUCCESS,
+  GET_GHE_FAILED,
+  CHANGE_SELECT_GHE,
+} from "./constant";
 import Axios from "axios";
-
 
 export const actAddGheApi = (id) => {
   return (dispatch) => {
@@ -13,7 +17,6 @@ export const actAddGheApi = (id) => {
         dispatch(actAddGheSuccess(result.data));
       })
       .catch((err) => {
-        console.log(err);
         dispatch(actAddGheFailed(err));
       });
   };
@@ -45,7 +48,12 @@ export const actChangeSelectGhe = (ghe) => {
     ghe,
   };
 };
-
+export const actThongTinGhe = (ghe) => {
+  return {
+    type: CHANGE_SELECT_GHE,
+    ghe,
+  };
+};
 // let subArr =[]
 // arr = [[],[],[],[]]
 // let Arr = array [160 object].map(object,index) => {

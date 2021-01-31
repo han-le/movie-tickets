@@ -25,3 +25,18 @@
 #nav__menu .nav-item .nav-link {
   color: #954545b8;
 }
+
+#sign-in-btn {
+  border-radius: 0;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: 10px;
+  color: #460000;
+  width: 87px;
+  height: 43px;
+  background: linear-gradient(
+          224deg
+          , #f04e24, #f88b14, #eab105, #ffcc3f);
+  border: none;
+}
