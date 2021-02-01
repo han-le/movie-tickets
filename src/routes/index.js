@@ -57,7 +57,7 @@ const routesGuest = [
   },
   {
     exact: false,
-    path: "/booking",
+    path: "/booking/:id",
     component: BookingPage,
   },
   {

@@ -1,32 +1,91 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { actAddGheFailed } from "./../../containers/GuestLayout/BookingPage/modules/action";
 
 class ThongTinDatGhe extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      maLichChieu: "",
+      danhSachVe: [
+        {
+          maGhe: "",
+          giaVe: "",
+        },
+      ],
+      taiKhoanNguoiDung: "",
+    };
+  }
+
+  tongTien = (data) => {
+    let total = 0;
+    data.map((gheDangDat, index) => {
+      return (total += gheDangDat.giaVe);
+    });
+    return <span>{total}</span>;
+  };
+
+  checkOut = () => {
+    // console.log("-----------");
+    // console.log(this.props.danhSachGheDangDat);
+    {
+      this.props.danhSachGheDangDat.map((gheDangDat, index) => {
+        this.setState({
+          maLichChieu: "",
+          danhSachVe: [
+            {
+              maGhe: gheDangDat.maGhe,
+              giaVe: gheDangDat.giaVe,
+            },
+          ],
+          taiKhoanNguoiDung: "",
+        });
+        this.props.checkOut(this.state);
+      });
+    }
+  };
+
   render() {
     return (
       <div>
-
         <div className="mt-5">
-          <table className="table" border="">
-            <thead>
-              <tr className="">
-                <th>Seat Number</th>
-                <th>Price</th>
-                <th>Note</th>
-              </tr>
-            </thead>
-            <tbody>
-              {this.props.danhSachGheDangDat.map((gheDangDat, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{gheDangDat.soGhe}</td>
-                    <td>{gheDangDat.gia}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
+          <button className="mt-4 gheDuocChon"></button>
+          <span className="ml-2 text-light font-weight-bolder">Ghế đã đặt</span>
+          <br />
+          <button className="mt-1 gheDangChon"></button>
+          <span className="ml-2 text-light font-weight-bolder">Ghế đã đặt</span>
+          <br />
+          <div className="mr-2">
+            <button className="mt-1 ghe "></button>
+            <span className="ml-2 text-light font-weight-bolder">
+              Ghế đã đặt
+            </span>
+          </div>
+        </div>
+        <div className="mt-5 row">
+          <div className="col-sm-7 col-xs-7">
+            {this.props.danhSachGheDangDat.map((gheDangDat, index) => {
+              return (
+                <Fragment key={index}>
+                  <span className="mr-1">{gheDangDat.tenGhe}</span>
+                  {(index + 1) % 5 === 0 && <br />}
+                </Fragment>
+              );
+            })}
+          </div>
+          <div className="col-sm-5 col-xs-5">
+            {this.tongTien(this.props.danhSachGheDangDat)}
+          </div>
+        </div>
+        <div className="mt-5">
+          <button
+            className="w-100"
+            onClick={() => {
+              this.checkOut();
+            }}
+          >
+            CHECK OUT
+          </button>
         </div>
       </div>
     );
@@ -34,7 +93,7 @@ class ThongTinDatGhe extends Component {
 }
 const mapStateToProps = (state) => {
   return {
-    danhSachGheDangDat: state.addGheReducer.danhSachGheDangDat,
+    danhSachGheDangDat: state.addGheReducer.danhSachGheDangChon,
   };
 };
 
@@ -42,6 +101,10 @@ const mapDispatchToProps = (dispath) => {
   return {
     huyGhe: (soGhe) => {
       dispatchEvent(actAddGheFailed(soGhe));
+    },
+    checkOut: (data) => {
+      // dispatchEvent(actAddGheFailed(data));
+      console.log(data);
     },
   };
 };
