@@ -26,9 +26,6 @@ class ThongTinDatGhe extends Component {
   };
 
   checkOut = () => {
-    // console.log("-----------");
-    // console.log(this.props.danhSachGheDangDat);
-    
       this.props.danhSachGheDangDat.map((gheDangDat, index) => {
         this.setState({
           maLichChieu: this.props.maLichChieu,
