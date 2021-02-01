@@ -12,7 +12,6 @@ class MovieBookingDetails extends Component {
     componentDidMount() {
         console.log("I am DidMount in Movie Booking Page. My props have");
         //dispatch the action to get the movie, pass the id to the action, id comes from <Link>
-        console.log(this.props);
 
         //Goi ham lay thong tin phim, truyen vao maPhim
         const movie_ID = this.props.match.params.id;

@@ -10,7 +10,7 @@ export const actAddGheApi = (id) => {
   return (dispatch) => {
     dispatch(actAddGheRequest());
     Axios({
-      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=18532`,
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`,
       method: "GET",
     })
       .then((result) => {

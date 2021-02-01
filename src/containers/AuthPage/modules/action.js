@@ -27,14 +27,17 @@ export const actLoginApi = (user, history) => {
           localStorage.setItem("UserName", JSON.stringify(result.data.hoTen));
           console.log(result.data);
           history.push("/dashboard");
+
         } else if (result.data.maLoaiNguoiDung === "KhachHang") {
           localStorage.setItem(
             "User",
             JSON.stringify(result.data.maLoaiNguoiDung)
           );
           localStorage.setItem("UserName", JSON.stringify(result.data.hoTen));
+          localStorage.setItem("UserAccount", JSON.stringify(result.data.taiKhoan));
           // history.push("/");
           history.goBack();
+
         } else {
           alert("Tai Khoan Khong Chap Thuan");
         }
