@@ -6,27 +6,14 @@ class ThongTinDatGhe extends Component {
   render() {
     return (
       <div>
+
         <div className="mt-5">
-          <button className="mt-4 gheDuocChon"></button>
-          <span className="ml-2 text-light font-weight-bolder">Ghế đã đặt</span>
-          <br />
-          <button className="mt-1 gheDangChon"></button>
-          <span className="ml-2 text-light font-weight-bolder">Ghế đã đặt</span>
-          <br />
-          <div className="mr-2">
-            <button className="mt-1 ghe "></button>
-            <span className="ml-2 text-light font-weight-bolder">
-              Ghế đã đặt
-            </span>
-          </div>
-        </div>
-        <div className="mt-5">
-          <table className="table" border="2">
+          <table className="table" border="">
             <thead>
-              <tr className="text-light" style={{ fontSize: 15 }}>
-                <th>Số Ghế</th>
-                <th>Giá</th>
-                <th>Ghi Chú</th>
+              <tr className="">
+                <th>Seat Number</th>
+                <th>Price</th>
+                <th>Note</th>
               </tr>
             </thead>
             <tbody>

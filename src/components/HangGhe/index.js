@@ -25,7 +25,7 @@ class HangGhe extends Component {
             this.props.datGhe(ghe);
           }}
           disable={ghe.daDat}
-          className={`ghe text-light ${cssGheDat} ${cssGheChon}`}
+          className={`ghe ${cssGheDat} ${cssGheChon}`}
           key={index}
         >
           {ghe.soGhe}
@@ -37,9 +37,9 @@ class HangGhe extends Component {
   renderHang = () => {
     return this.props.hangGhe.danhSachGhe.map((hang, index) => {
       return (
-        <button className="rowNumber font-weight-bolder text-light">
+        <span className="rowNumber">
           {hang.soGhe}
-        </button>
+        </span>
       );
     });
   };
@@ -61,10 +61,7 @@ class HangGhe extends Component {
   };
   render() {
     return (
-      <div
-        className="text-light font-weight-bolder text-left ml-5 mt-2 "
-        style={{ fontSize: "25px" }}
-      >
+      <div>
         {this.renderHangNgang()}
       </div>
     );

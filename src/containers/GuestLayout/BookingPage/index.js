@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import ThongTinDatGhe from "../../../components/ThongTinDatGhe";
 import danhSachGhe from "../../../data/danhSachGhe.json";
 import HangGhe from "../../../components/HangGhe";
-import "./css/BaiTapBookingTicket.css";
+import "./css/BookingTicket.css";
 
 export default class index extends Component {
   renderHangGhe = () => {
@@ -19,15 +19,7 @@ export default class index extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          position: "fixed",
-          width: "100%",
-          height: "100%",
-          backgroundColor: "grey",
-          backgroundSize: "100%",
-        }}
-      >
+      <div className="ticket-booking">
         <div className="container-fluid">
           <div className="row">
             <div className="col-8 text-center">
@@ -35,11 +27,21 @@ export default class index extends Component {
                 ĐẶT VÉ XEM PHIM
               </h1>{" "}
               <div className="mt-5 row justify-content-center align-items-center">
-                <div className="screen"></div>
+                <div className="screen" />
               </div>
-              <div className="text-light mt-3" style={{ fontSize: "20px" }}>
-                Màng hình
+              <div className="screen-info">
+                <span className="screen-text">Screen</span>
                 {this.renderHangGhe()}
+              </div>
+              <div className="seat-description-wrap">
+                <div className="seat-description">
+                  <span className="dot reserved" />
+                  <span className="">Reserved</span>
+                  <span className="dot selected" />
+                  <span className="">Selected</span>
+                  <span className="dot available" />
+                  <span className="">Available</span>
+                </div>
               </div>
             </div>
             
