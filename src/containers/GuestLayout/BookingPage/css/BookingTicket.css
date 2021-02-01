@@ -15,9 +15,7 @@
     font-weight: 500;
 }
 
-.rowNumber{
 
-}
 
 .firstChar{
     color: yellow;
@@ -81,7 +79,7 @@
 .ghe{
     border: none;
     background: #ffecf1;
-    width: 45px;
+    width: 40px;
     height: 35px;
     font-size: 12px;
     margin-left: 2%;
