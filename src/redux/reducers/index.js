@@ -10,6 +10,7 @@ import addMovieReducer from "../../components/AddMovie/modules/reducers";
 import addAccountReducer from "../../components/AddUser/modules/reducer"
 import updateAccountReducer from "../../components/UserEdit/modules/reducer"
 import updateMovieReducer from "../../components/MovieEdit/modules/reducer";
+import userInfoReducer from "../../components/UserProfile/modules/reducer";
 
 
 //Create rootReducer to use in store. This manages CHILD REDUCERS in the project
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
   addMovieReducer,
   addAccountReducer,
   updateAccountReducer,
-  updateMovieReducer
+  updateMovieReducer,
+  userInfoReducer
 });
 
 export default rootReducer;

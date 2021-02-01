@@ -42,7 +42,7 @@ class MovieManagement extends Component {
             title: '',
             key: 'hinhAnh',
             dataIndex: 'hinhAnh',
-            render:  (image) => <img src={image} width={45} height={45} style={{borderRadius: '50%'}} alt="poster" />
+            render:  (image) => <img src={image} width={40} height={60} style={{borderRadius: '4px'}} alt="poster" />
         },
         {
             title: 'Title',

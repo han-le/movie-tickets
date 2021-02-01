@@ -14,11 +14,7 @@ class Responsive extends Component {
     }
 
     renderCinemaCard = () => {
-        //Get cinema list from mapStateToProps
         const cinemaList = this.props.cinemaList;
-        console.log("Cinema List Has :")
-        console.log(cinemaList)
-        //Loop over the array when ONLY WHEN the array is loaded
         if (cinemaList && cinemaList.length > 0) {
             return cinemaList.map((cinema_object) => {
                 return <CinemaCard cinema_object={cinema_object} />
@@ -62,6 +58,8 @@ class Responsive extends Component {
                 }
             ]
         };
+
+
         return (
             <div>
                 <Slider {...settings}>

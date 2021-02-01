@@ -1,52 +1,57 @@
 import React, { Component } from 'react';
-import {Drawer, Form, Button, Col, Row, Input, Select, Space} from 'antd';
+import {Drawer, Form, Button, Col, Row, Input,} from 'antd';
 import { actMovieUpdateAPI } from "./modules/action";
 import { connect } from "react-redux";
 import formatDate from "../GlobalFunctions/GlobalFunctions";
+import moment from "moment";
 
 
 class MovieEdit extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            maPhim: "",
-            tenPhim: "",
-            biDanh: "",
-            trailer: "",
-            hinhAnh: "",
-            moTa: "",
-            maNhom: "GP07",
-            ngayKhoiChieu: "",
-            danhGia: "",
-            visible: false
-        };
+        this.state = Object.assign({}, this.props.account, {
+            visible: false,
+            ngayKhoiChieu: moment(this.props.account.ngayKhoiChieu).format('YYYY-MM-DD')
+        });
     }
-    onFinish = (values) => {
-        this.onClose()
-        this.setState({
-            maPhim: values.maPhim,
-            tenPhim: values.tenPhim,
-            biDanh: values.biDanh,
-            trailer: values.trailer,
-            hinhAnh: values.hinhAnh,
-            moTa: values.moTa,
-            maNhom: "GP07",
-            ngayKhoiChieu: formatDate(values.ngayKhoiChieu),
-            danhGia: values.danhGia,
-        })
-        console.log("this.state =")
-        console.log(this.state);
-        let a = this.props.updateMovie(this.state);
-        console.log("this.props.updateMovie(this.state) =")
-        console.log(a)
-    };
+
+    //Submit button (Edit Movie)
+    handleSubmit = (event) => {
+        event.preventDefault();
+        let make = Object.assign({}, this.props.account, this.state);
+        this.props.updateMovie(make);
+    }
+
+    //Upload image
+    handleFileChange = (e) => {
+        const {name, files} = e.target;
+        let formVal = {};
+        formVal[name] = files[0];
+        let obj = Object.assign({}, this.state, formVal);
+        this.setState(obj);
+    }
+    //
+    // onFinish = (values) => {
+    //     this.onClose()
+    //     this.setState({
+    //         tenPhim: values.tenPhim,
+    //         trailer: values.trailer,
+    //         hinhAnh: values.hinhAnh,
+    //         moTa: values.moTa,
+    //         // maNhom: "GP07",
+    //         ngayKhoiChieu: formatDate(values.ngayKhoiChieu),
+    //         danhGia: values.danhGia,
+    //     })
+    //
+    // };
 
     showDrawer = () => {
         this.setState({
             visible: true,
         });
-        console.log(this.state)
+        console.log("----- State ------")
+        console.log(this.state);
     };
 
     onClose = () => {
@@ -55,122 +60,88 @@ class MovieEdit extends Component {
         });
     };
 
+    //Get input from user => set State
+    handleOnChange = (event) => {
+        const {name, value} = event.target;
+        let formVal = {};
+        formVal[name] = value;
+        let obj = Object.assign({}, this.state, formVal);
+        this.setState(obj);
+    }
+
     render() {
+        let objMovie = this.props.account;
+        console.log("---------Props: account --------");
+        console.log(objMovie)
         return (
             <div>
                 <Button shape="circle" style={{background: "#e3c7ff", color: "#6f0dd0", border: "none"}} onClick={this.showDrawer}>
                     <i className="fas fa-pen" /></Button>
                 <Drawer
-
                     title="Update Movie Information"
                     width={720}
                     onClose={this.onClose}
                     visible={this.state.visible}
                     bodyStyle={{ paddingBottom: 80 }}
                     footer={
-                        <div
-                            style={{
-                                textAlign: 'right',
-                            }}
-                        >
-                        </div>
+                        <div style={{textAlign: 'right'}}/>
                     }
                 >
-                    <Form layout="vertical" hideRequiredMark onFinish={(values) => { this.onFinish(values) }} on>
-                        <Row gutter={16}>
-                            <Col span={12}>
-                                <Form.Item
-                                    name="tenPhim"
-                                    label="Movie Title"
-                                    initialValue={this.props.account.tenPhim}
-                                    rules={[{ required: true, message: 'Please fulfill' }]}
-                                >
-                                    <Input defaultValue={this.props.account.tenPhim} />
-                                </Form.Item>
-                            </Col>
-                            <Col span={12}>
-                                <Form.Item
-                                    name="biDanh"
-                                    label="Code"
-                                    initialValue={this.props.account.biDanh}
-                                >
-                                    <Input defaultValue={this.props.account.biDanh} disabled={true} />
-                                </Form.Item>
-                            </Col>
-                        </Row>
-                        <Row gutter={16}>
-                            <Col span={12}>
-                                <Form.Item
-                                    name="trailer"
-                                    label="Trailer"
-                                    initialValue={this.props.account.trailer}
-                                    rules={[{ required: true, message: 'Please fulfill' }]}
-                                >
-                                    <Input defaultValue={this.props.account.trailer} />
-                                </Form.Item>
-                            </Col>
-                            <Col span={12}>
-                                <Form.Item
-                                    name="hinhAnh"
-                                    label="Poster"
-                                    initialValue={this.props.account.hinhAnh}
-                                    rules={[{ required: true, message: 'Please fulfill' }]}
-                                >
-                                    <Input defaultValue={this.props.account.hinhAnh} />
-                                </Form.Item>
-                            </Col>
-                        </Row>
-                        <Row gutter={16}>
-                            <Col span={12}>
-                                <Form.Item
-                                    name="moTa"
-                                    label="Description"
-                                    initialValue={this.props.account.moTa}
-                                    rules={[{ required: true, message: 'Please fulfill' }]}
-                                >
-                                    <Input defaultValue={this.props.account.moTa} />
-                                </Form.Item>
-                            </Col>
-                            <Col span={12}>
-                                <Form.Item
-                                    name="ngayKhoiChieu"
-                                    label="Released date"
-                                    initialValue={this.props.account.ngayKhoiChieu}
-                                    rules={[{ required: true, message: 'Please fulfill' }]}
-                                >
-                                    <Input defaultValue={this.props.account.ngayKhoiChieu} />
-                                </Form.Item>
-                            </Col>
-                            <Col span={12}>
-                                <Form.Item
-                                    name="danhGia"
-                                    label="Ratings"
-                                    initialValue={this.props.account.danhGia}
-                                    rules={[{ required: true, message: 'Please fulfill' }]}
-                                >
-                                    <Input defaultValue={this.props.account.danhGia} />
-                                </Form.Item>
-                                <Form.Item
-                                    name="maPhim"
-                                    label="Movie ID"
-                                    initialValue={this.props.account.maPhim}
-                                    rules={[{ required: true, message: 'Please fulfill' }]}
-                                >
-                                    <Input defaultValue={this.props.account.maPhim} disabled={true} />
-                                </Form.Item>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Form.Item>
-                                <Button onClick={this.onClose} style={{ marginRight: 8 }}>
-                                    Cancel
-                                </Button>
-                                <Button type="primary" htmlType="submit">
-                                    Submit
-                                </Button>
-                            </Form.Item>
-                        </Row>
-                    </Form>
+                    <div className={"dashboard__content"}>
+                        <div className="dashboard__card">
+                            <div className="card__header">
+                                <div className="card__header-title">
+                                    <h2 className="title">Fill in new information</h2>
+                                </div>
+                            </div>
+                            <div className="card__body">
+                                <div className="card__body-wrap">
+
+                                    {/*    Form*/}
+                                    <form onSubmit={this.handleSubmit}>
+                                        <div className="form-row">
+                                            <div className="form-group col-md-6">
+                                                <label htmlFor="tenPhim">Name</label>
+                                                <input type="text" className="form-control" value={this.state.tenPhim} name="tenPhim" onChange={this.handleOnChange}/>
+                                            </div>
+                                        </div>
+
+                                        <div className="form-row">
+                                            <div className="form-group col-md-6">
+                                                <label htmlFor="danhGia">Rating</label>
+                                                <input type="text" className="form-control" value={this.state.danhGia} name="danhGia" onChange={this.handleOnChange} />
+                                            </div>
+                                            <div className="form-group col-md-6">
+                                                <label htmlFor="trailer">Trailer's link</label>
+                                                <input type="text" className="form-control" value={this.state.trailer} name="trailer" onChange={this.handleOnChange} />
+                                            </div>
+                                        </div>
+
+                                        <div className="form-row">
+                                            <div className="form-group col-md-4">
+                                                <label htmlFor="ngayKhoiChieu">Released date</label>
+                                                <input type="date" className="form-control" value={this.state.ngayKhoiChieu} name="ngayKhoiChieu" onChange={this.handleOnChange} />
+                                            </div>
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label htmlFor="moTa">Description</label>
+                                            <textarea className="form-control" value={this.state.moTa} rows="3" name="moTa" onChange={this.handleOnChange} />
+                                        </div>
+
+                                        <div className="form-group">
+                                            <label htmlFor="hinhAnh">Poster</label>
+                                            <input type="file" className="form-control-file" name="hinhAnh" onChange={this.handleFileChange} />
+                                        </div>
+                                        <div className="btn-submit">
+                                            <button className={"btn btn-primary"}>Submit</button>
+                                        </div>
+                                    </form>
+                                    {/*=======Form ======= */}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </Drawer>
             </div>
         );
@@ -186,7 +157,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         updateMovie: (movie) => {
-            dispatch(actMovieUpdateAPI(movie));
+            return dispatch(actMovieUpdateAPI(movie));
         },
     };
 };

@@ -23,22 +23,17 @@ export const actAddMovieFailed = (err) => {
 
 export const actAddMovieAPI = (movie) => {
 
-    //JSON.parse to convert string to an object
     let accessToken = JSON.parse(localStorage.getItem("UserAdmin")).accessToken;
     let form = new FormData();
 
     let formData = Object.keys(movie).reduce((carry, key) => {
         let data = movie[key];
-
         if (key === 'ngayKhoiChieu') {
             data = formatDate(data);
         }
-
         carry.append(key,data);
-
         return carry;
     }, new FormData())
-
 
     form.append("", "")
 
