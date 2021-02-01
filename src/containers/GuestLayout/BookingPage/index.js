@@ -1,11 +1,10 @@
-import { red } from "@material-ui/core/colors";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { actAddGheApi } from "./modules/action";
 import ThongTinDatGhe from "../../../components/ThongTinDatGhe";
 import danhSachGhe from "../../../data/danhSachGhe.json";
 import HangGhe from "../../../components/Ghe";
-import "./css/BaiTapBookingTicket.css";
+import "./css/BookingTicket.css";
 import { Fragment } from "react";
 import Ghe from "../../../components/Ghe";
 
@@ -31,15 +30,7 @@ class BookingPage extends Component {
   };
   render() {
     return (
-      <div
-        style={{
-          position: "fixed",
-          width: "100%",
-          height: "100%",
-          backgroundColor: "grey",
-          backgroundSize: "100%",
-        }}
-      >
+      <div className="ticket-booking">
         <div className="container-fluid">
           <div className="row">
             <div className="col-8 text-center">
@@ -50,9 +41,16 @@ class BookingPage extends Component {
                 <div className="screen"></div>
               </div>
               <div className="text-light mt-3" style={{ fontSize: "20px" }}>
-                <h2>Màn hình</h2>
                 {this.renderHangGhe2(this.props.danhSachGheDangDat)}
               </div>
+                <div className="seat-description-wrap">
+                    <span className="dot available" />
+                    <span className="">Available</span>
+                    <span className="dot reserved" />
+                    <span className="">Reserved</span>
+                    <span className="dot selected" />
+                    <span className="">Selected</span>
+                </div>
             </div>
 
             <div className="col-4 text-center   ">
