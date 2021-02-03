@@ -29,16 +29,15 @@ class BookingPage extends Component {
     });
   };
   render() {
+
     return (
       <div className="ticket-booking">
         <div className="container-fluid">
           <div className="row">
             <div className="col-8 text-center">
-              <h1 className="text-success font-weight-bolder display-4">
-                ĐẶT VÉ XEM PHIM
-              </h1>{" "}
+              <h3 className="">Choose your seat</h3>
               <div className="mt-5 row justify-content-center align-items-center">
-                <div className="screen"></div>
+                <div className="screen" />
               </div>
               <div className="text-light mt-3" style={{ fontSize: "20px" }}>
                 {this.renderHangGhe2(this.props.danhSachGheDangDat)}
@@ -53,14 +52,13 @@ class BookingPage extends Component {
                 </div>
             </div>
 
-            <div className="col-4 text-center   ">
-              <h3>{this.props.thongTinPhim.tenPhim}</h3>
-              <h3>{this.props.thongTinPhim.tenCumRap}</h3>
-              <h3>{this.props.thongTinPhim.ngayChieu}</h3>
-              <h3>{this.props.thongTinPhim.gioChieu}</h3>
-              <ThongTinDatGhe maLichChieu={this.props.match.params.id}/>
+            <div className="col-md-4">
+              <div className="ticket-wrap theme-background">
+                <ThongTinDatGhe movieInfo={this.props.thongTinPhim} maLichChieu={this.props.match.params.id} />
+              </div>
             </div>
           </div>
+
         </div>
       </div>
     );
