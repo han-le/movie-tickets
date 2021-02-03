@@ -30,7 +30,6 @@ class UserEdit extends Component {
             maLoaiNguoiDung: values.maLoaiNguoiDung,
             hoTen: values.hoTen,
         })
-        console.log(this.state);
         this.props.updateAccount(this.state);
     };
 

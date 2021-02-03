@@ -9,8 +9,13 @@ import { Fragment } from "react";
 import Ghe from "../../../components/Ghe";
 
 class BookingPage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
-    this.props.getDetailMovie();
+    this.props.getDetailMovie(this.props.match.params.id);
+    ;
   }
 
   renderHangGhe2 = (danhSachGheDangDat) => {
@@ -48,12 +53,8 @@ class BookingPage extends Component {
             </div>
 
             <div className="col-md-4">
-              {/*<h3>{this.props.thongTinPhim.tenPhim}</h3>*/}
-              {/*<h3>{this.props.thongTinPhim.tenCumRap}</h3>*/}
-              {/*<h3>{this.props.thongTinPhim.ngayChieu}</h3>*/}
-              {/*<h3>{this.props.thongTinPhim.gioChieu}</h3>*/}
               <div className="ticket-wrap theme-background">
-                <ThongTinDatGhe movieInfo={this.props.thongTinPhim}/>
+                <ThongTinDatGhe movieInfo={this.props.thongTinPhim} maLichChieu={this.props.match.params.id} />
               </div>
             </div>
           </div>

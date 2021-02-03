@@ -8,7 +8,6 @@ const randomInteger = (min, max) => {
 const Movie = ({ movieData }) => {
   if (!movieData) return null;
   const { lstLichChieuTheoPhim, hinhAnh, tenPhim } = movieData;
-  console.log("AHIHI "+lstLichChieuTheoPhim);
 
   return (
     <div style={{ marginTop: "20px", maxWidth: "500px" }}>
@@ -38,7 +37,7 @@ const Movie = ({ movieData }) => {
               const minute = new Date(gioChieu.ngayChieuGioChieu).getMinutes();
               return (
                 <Link
-                  to={`/booking/${lstLichChieuTheoPhim.maLichChieu}`}
+                  to={`/booking/${gioChieu.maLichChieu}`}
                   style={{
                     marginTop: "10px",
                     display: "flex",

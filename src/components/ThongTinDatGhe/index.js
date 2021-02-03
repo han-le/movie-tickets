@@ -24,27 +24,29 @@ class ThongTinDatGhe extends Component {
     data.map((gheDangDat, index) => {
       return (total += gheDangDat.giaVe);
     });
-    return <span>{total}</span>;
+    return <span>{total} đ</span>;
   };
 
   checkOut = () => {
-    // console.log("-----------");
-    // console.log(this.props.danhSachGheDangDat);
-    {
       this.props.danhSachGheDangDat.map((gheDangDat, index) => {
         this.setState({
-          maLichChieu: "",
+          maLichChieu: this.props.maLichChieu,
           danhSachVe: [
             {
               maGhe: gheDangDat.maGhe,
               giaVe: gheDangDat.giaVe,
             },
           ],
-          taiKhoanNguoiDung: "",
+          taiKhoanNguoiDung: localStorage.getItem("UserAccount"),
         });
         this.props.checkOut(this.state);
+        // console.log("======");
+        // console.log(this.props.maLichChieu);
+        // console.log(gheDangDat.maGhe);
+        // console.log(gheDangDat.giaVe);
+        // console.log(localStorage.getItem("UserAccount"))
       });
-    }
+    
   };
 
   render() {
