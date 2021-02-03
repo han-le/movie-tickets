@@ -1,20 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { actAddGheFailed } from "./../../containers/GuestLayout/BookingPage/modules/action";
+import { actBookGhe } from "./../../containers/GuestLayout/BookingPage/modules/action";
 
 class ThongTinDatGhe extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      maLichChieu: "",
-      danhSachVe: [
-        {
-          maGhe: "",
-          giaVe: "",
-        },
-      ],
-      taiKhoanNguoiDung: "",
-    };
   }
 
   tongTien = (data) => {
@@ -26,31 +16,24 @@ class ThongTinDatGhe extends Component {
   };
 
   checkOut = () => {
-      this.props.danhSachGheDangDat.map((gheDangDat, index) => {
-        this.setState({
-          maLichChieu: this.props.maLichChieu,
-          danhSachVe: [
-            {
-              maGhe: gheDangDat.maGhe,
-              giaVe: gheDangDat.giaVe,
-            },
-          ],
-          taiKhoanNguoiDung: localStorage.getItem("UserAccount"),
-        });
-        this.props.checkOut(this.state);
-        // console.log("======");
-        // console.log(this.props.maLichChieu);
-        // console.log(gheDangDat.maGhe);
-        // console.log(gheDangDat.giaVe);
-        // console.log(localStorage.getItem("UserAccount"))
-      });
-    
+    this.props.danhSachGheDangDat.map((gheDangDat, index) => {
+      let data = {
+        maLichChieu: this.props.maLichChieu,
+        danhSachVe: [
+          {
+            maGhe: gheDangDat.maGhe,
+            giaVe: gheDangDat.giaVe,
+          },
+        ],
+        taiKhoanNguoiDung: localStorage.getItem("UserAccount").replace(/[^\w\s]/gi, ""),
+      };
+      this.props.checkOut(data.maLichChieu, data.danhSachVe, data.taiKhoanNguoiDung);
+    });
   };
 
   render() {
     return (
       <div>
-
         <div className="mt-5 row">
           <div className="col-sm-7 col-xs-7">
             <span>Ghế : </span>
@@ -87,14 +70,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispath) => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    huyGhe: (soGhe) => {
-      dispatchEvent(actAddGheFailed(soGhe));
-    },
-    checkOut: (data) => {
-      // dispatchEvent(actAddGheFailed(data));
-      console.log(data);
+    checkOut: (maLichChieu, danhSachVe, taiKhoanNguoiDung) => {
+      dispatch(actBookGhe(maLichChieu, danhSachVe, taiKhoanNguoiDung));
     },
   };
 };

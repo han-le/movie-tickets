@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { actAddGheApi } from "./modules/action";
 import ThongTinDatGhe from "../../../components/ThongTinDatGhe";
@@ -15,7 +16,6 @@ class BookingPage extends Component {
 
   componentDidMount() {
     this.props.getDetailMovie(this.props.match.params.id);
-    ;
   }
 
   renderHangGhe2 = (danhSachGheDangDat) => {
@@ -29,41 +29,45 @@ class BookingPage extends Component {
     });
   };
   render() {
-    return (
-      <div className="ticket-booking">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-8 text-center">
-              <h1 className="text-success font-weight-bolder display-4">
-                ĐẶT VÉ XEM PHIM
-              </h1>{" "}
-              <div className="mt-5 row justify-content-center align-items-center">
-                <div className="screen"></div>
-              </div>
-              <div className="text-light mt-3" style={{ fontSize: "20px" }}>
-                {this.renderHangGhe2(this.props.danhSachGheDangDat)}
-              </div>
-                <div className="seat-description-wrap">
-                    <span className="dot available" />
-                    <span className="">Available</span>
-                    <span className="dot reserved" />
-                    <span className="">Reserved</span>
-                    <span className="dot selected" />
-                    <span className="">Selected</span>
+    if (localStorage.getItem("User") == null) {
+      return <Redirect to="/login" />;
+    } else {
+      return (
+        <div className="ticket-booking">
+          <div className="container-fluid">
+            <div className="row">
+              <div className="col-8 text-center">
+                <h1 className="text-success font-weight-bolder display-4">
+                  ĐẶT VÉ XEM PHIM
+                </h1>{" "}
+                <div className="mt-5 row justify-content-center align-items-center">
+                  <div className="screen"></div>
                 </div>
-            </div>
+                <div className="text-light mt-3" style={{ fontSize: "20px" }}>
+                  {this.renderHangGhe2(this.props.danhSachGheDangDat)}
+                </div>
+                <div className="seat-description-wrap">
+                  <span className="dot available" />
+                  <span className="">Available</span>
+                  <span className="dot reserved" />
+                  <span className="">Reserved</span>
+                  <span className="dot selected" />
+                  <span className="">Selected</span>
+                </div>
+              </div>
 
-            <div className="col-4 text-center   ">
-              <h3>{this.props.thongTinPhim.tenPhim}</h3>
-              <h3>{this.props.thongTinPhim.tenCumRap}</h3>
-              <h3>{this.props.thongTinPhim.ngayChieu}</h3>
-              <h3>{this.props.thongTinPhim.gioChieu}</h3>
-              <ThongTinDatGhe maLichChieu={this.props.match.params.id}/>
+              <div className="col-4 text-center   ">
+                <h3>{this.props.thongTinPhim.tenPhim}</h3>
+                <h3>{this.props.thongTinPhim.tenCumRap}</h3>
+                <h3>{this.props.thongTinPhim.ngayChieu}</h3>
+                <h3>{this.props.thongTinPhim.gioChieu}</h3>
+                <ThongTinDatGhe maLichChieu={this.props.match.params.id} />
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
 const mapStateToProps = (state) => {
