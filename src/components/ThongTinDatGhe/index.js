@@ -67,7 +67,7 @@ class ThongTinDatGhe extends Component {
                 </div>
                 <div className="price --flex-column">
                   <div className="label">Price</div>
-                  <div className="cost -bold">{this.tongTien(this.props.danhSachGheDangDat)} VND</div>
+                  <div className="cost -bold">{this.tongTien(this.props.danhSachGheDangDat)}</div>
                 </div>
               </div>
             </div>
