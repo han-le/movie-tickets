@@ -29,6 +29,7 @@ class BookingPage extends Component {
     });
   };
   render() {
+
     if (localStorage.getItem("User") == null) {
       return <Redirect to="/login" />;
     } else {
@@ -44,6 +45,7 @@ class BookingPage extends Component {
                 <div className="text-light mt-3" style={{ fontSize: "20px" }}>
                   {this.renderHangGhe2(this.props.danhSachGheDangDat)}
                 </div>
+
                 <div className="seat-description-wrap">
                   <span className="dot available" />
                   <span className="">Available</span>
@@ -61,9 +63,11 @@ class BookingPage extends Component {
                     maLichChieu={this.props.match.params.id}
                   />
                 </div>
+
               </div>
             </div>
           </div>
+
         </div>
       );
     }

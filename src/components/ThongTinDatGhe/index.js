@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { actBookGhe } from "./../../containers/GuestLayout/BookingPage/modules/action";
 import "./CheckOutInfo.css"
 
+
 class ThongTinDatGhe extends Component {
   constructor(props) {
     super(props);
@@ -33,14 +34,22 @@ class ThongTinDatGhe extends Component {
   };
 
   render() {
+
+//     const movieInfo = this.props.movieInfo;
+//     console.log("Ticket ==============================")
+//     console.log(movieInfo);
+
+
     return (
       <div className="container">
         <div className="row">
           <widget type="ticket" className="--flex-column">
             <div className="top --flex-column">
+
               <div className="movie-title">{this.props.movieInfo.tenPhim}</div>
               <div className="tourname">{this.props.movieInfo.tenCumRap}</div>
               <div className="date">{this.props.movieInfo.ngayChieu} - {this.props.movieInfo.gioChieu}</div>
+
               <img src="https://image.freepik.com/free-vector/addicted-junk-food-snacks_53876-43705.jpg" alt="poster"/>
               <div className="deetz --flex-row-j!sb">
                 <div className="event --flex-column">
