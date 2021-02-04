@@ -33,6 +33,7 @@ export const actLoginApi = (user, history) => {
             "User",
             JSON.stringify(result.data.maLoaiNguoiDung)
           );
+          localStorage.setItem("UserData", JSON.stringify(result.data));
           localStorage.setItem("UserName", JSON.stringify(result.data.hoTen));
           localStorage.setItem("UserAccount", JSON.stringify(result.data.taiKhoan));
           // history.push("/");

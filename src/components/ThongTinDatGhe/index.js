@@ -1,22 +1,12 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { actAddGheFailed } from "../../containers/GuestLayout/BookingPage/modules/action";
+import { actBookGhe } from "./../../containers/GuestLayout/BookingPage/modules/action";
 import "./CheckOutInfo.css"
 
 
 class ThongTinDatGhe extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      maLichChieu: "",
-      danhSachVe: [
-        {
-          maGhe: "",
-          giaVe: "",
-        },
-      ],
-      taiKhoanNguoiDung: "",
-    };
   }
 
   tongTien = (data) => {
@@ -28,6 +18,7 @@ class ThongTinDatGhe extends Component {
   };
 
   checkOut = () => {
+<<<<<<< HEAD
       this.props.danhSachGheDangDat.map((gheDangDat, index) => {
         this.setState({
           maLichChieu: this.props.maLichChieu,
@@ -40,28 +31,46 @@ class ThongTinDatGhe extends Component {
           taiKhoanNguoiDung: localStorage.getItem("UserAccount"),
         });
         this.props.checkOut(this.state);
-        // console.log("======");
-        // console.log(this.props.maLichChieu);
-        // console.log(gheDangDat.maGhe);
-        // console.log(gheDangDat.giaVe);
-        // console.log(localStorage.getItem("UserAccount"))
       });
     
   };
 
   render() {
     const movieInfo = this.props.movieInfo;
-    console.log("Ticket ==============================")
-    console.log(movieInfo);
+=======
+    this.props.danhSachGheDangDat.map((gheDangDat, index) => {
+      let data = {
+        maLichChieu: this.props.maLichChieu,
+        danhSachVe: [
+          {
+            maGhe: gheDangDat.maGhe,
+            giaVe: gheDangDat.giaVe,
+          },
+        ],
+        taiKhoanNguoiDung: localStorage.getItem("UserAccount").replace(/[^\w\s]/gi, ""),
+      };
+      this.props.checkOut(data.maLichChieu, data.danhSachVe, data.taiKhoanNguoiDung);
+    });
+  };
 
+  render() {
+
+//     const movieInfo = this.props.movieInfo;
+//     console.log("Ticket ==============================")
+//     console.log(movieInfo);
+
+
+>>>>>>> 1ba3f4f8875092adb8187e1824a78e43241bfdac
     return (
       <div className="container">
         <div className="row">
           <widget type="ticket" className="--flex-column">
             <div className="top --flex-column">
-              <div className="movie-title">{movieInfo.tenPhim}</div>
-              <div className="tourname">{movieInfo.tenCumRap}</div>
-              <div className="date">{movieInfo.ngayChieu} - {movieInfo.gioChieu}</div>
+
+              <div className="movie-title">{this.props.movieInfo.tenPhim}</div>
+              <div className="tourname">{this.props.movieInfo.tenCumRap}</div>
+              <div className="date">{this.props.movieInfo.ngayChieu} - {this.props.movieInfo.gioChieu}</div>
+
               <img src="https://image.freepik.com/free-vector/addicted-junk-food-snacks_53876-43705.jpg" alt="poster"/>
               <div className="deetz --flex-row-j!sb">
                 <div className="event --flex-column">
@@ -79,7 +88,7 @@ class ThongTinDatGhe extends Component {
                 </div>
                 <div className="price --flex-column">
                   <div className="label">Price</div>
-                  <div className="cost -bold">{this.tongTien(this.props.danhSachGheDangDat)} VND</div>
+                  <div className="cost -bold">{this.tongTien(this.props.danhSachGheDangDat)}</div>
                 </div>
               </div>
             </div>
@@ -109,12 +118,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    huyGhe: (soGhe) => {
-      dispatchEvent(actAddGheFailed(soGhe));
-    },
-    checkOut: (data) => {
-      // dispatchEvent(actAddGheFailed(data));
-      console.log(data);
+    checkOut: (maLichChieu, danhSachVe, taiKhoanNguoiDung) => {
+      dispatch(actBookGhe(maLichChieu, danhSachVe, taiKhoanNguoiDung));
     },
   };
 };

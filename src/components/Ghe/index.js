@@ -21,7 +21,7 @@ class Ghe extends Component {
   render() {
     return (
       <>
-        <button className={this.state.isBooked ? "ghe text-warning" : (this.state.isSelected ? "ghe text-success" : "ghe text-dark")} onClick={!this.state.isBooked && this.changeSelected} >
+        <button className={this.state.isBooked ? "ghe reserved" : (this.state.isSelected ? "ghe selected" : "ghe available")} onClick={!this.state.isBooked && this.changeSelected} >
           {this.props.ghe.tenGhe}
         </button>
       </>
