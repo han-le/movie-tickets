@@ -18,26 +18,6 @@ class ThongTinDatGhe extends Component {
   };
 
   checkOut = () => {
-<<<<<<< HEAD
-      this.props.danhSachGheDangDat.map((gheDangDat, index) => {
-        this.setState({
-          maLichChieu: this.props.maLichChieu,
-          danhSachVe: [
-            {
-              maGhe: gheDangDat.maGhe,
-              giaVe: gheDangDat.giaVe,
-            },
-          ],
-          taiKhoanNguoiDung: localStorage.getItem("UserAccount"),
-        });
-        this.props.checkOut(this.state);
-      });
-    
-  };
-
-  render() {
-    const movieInfo = this.props.movieInfo;
-=======
     this.props.danhSachGheDangDat.map((gheDangDat, index) => {
       let data = {
         maLichChieu: this.props.maLichChieu,
@@ -60,7 +40,6 @@ class ThongTinDatGhe extends Component {
 //     console.log(movieInfo);
 
 
->>>>>>> 1ba3f4f8875092adb8187e1824a78e43241bfdac
     return (
       <div className="container">
         <div className="row">
@@ -88,7 +67,7 @@ class ThongTinDatGhe extends Component {
                 </div>
                 <div className="price --flex-column">
                   <div className="label">Price</div>
-                  <div className="cost -bold">{this.tongTien(this.props.danhSachGheDangDat)}</div>
+                  <div className="cost -bold">{this.tongTien(this.props.danhSachGheDangDat)} VND</div>
                 </div>
               </div>
             </div>
