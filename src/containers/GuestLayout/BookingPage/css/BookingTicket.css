@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
 
 .ticket-booking {
-    font-family: 'DM Sans', sans-serif;
+    overflow: auto;
+    font-family: 'DM Sans', sans-serif !important;
     position: fixed;
     width: 100%;
     height: 100%;
@@ -9,30 +10,42 @@
     background-size: 100%;
 }
 
-.screen-text {
-    color: #928c9e;
-    font-size: 16px;
-    font-weight: 500;
+.ticket-booking .ticket-booking__wrap {
+    height: 100%;
 }
 
-
-
-.firstChar{
-    color: yellow;
-    font-size: 35px;
-    margin-right: 15px;
+.ticket-booking .ticket-booking__wrap .ticket-booking__content {
+    height: 100%;
 }
 
-/*Screen sign*/
-.screen{
-    border-bottom: 20px solid #a1a1a1;
-    height: 100px;
-    width:40%;
-    /*filter: drop-shadow(10px 30px 20px rgba(105, 105, 105, 0.5));*/
+/*---- Screen -----*/
+
+.screen-section {
+    border: 1px dashed #a9a9a9c4;
+    color: #8c8b8b;
+    padding: 8px;
+    margin: 50px auto;
+    width: 70%;
+    background-color: #f3f3f3d9;
+    border-radius: 4px;
 }
+
 
 /*===============SEATS===============*/
 
+.seat-map {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.seat-map .title {
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.seat-map .seat-map-content {
+    margin-top: 55px;
+}
 
 /*Seat Description*/
 .dot {
@@ -56,7 +69,7 @@
 
 .reserved {
     background: #d2cef1;
-    margin-left: 22px;
+    color: #23005c !important;
 }
 
 /*Selected seat*/
@@ -72,13 +85,13 @@
 
 .selected {
     background: #f31f58;
-    margin-left: 22px;
+    color: white !important;
 }
 
 /*Available seats*/
 .ghe{
     border: none;
-    background: #ffecf1;
+    /*background: #ffecf1;*/
     width: 40px;
     height: 35px;
     font-size: 12px;
@@ -90,9 +103,13 @@
 
 .available {
     background: #ffecf1;
-    margin-left: 22px;
 }
 
 .seat-description-wrap {
     margin-top: 28px;
+}
+
+.check-out {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
 }
