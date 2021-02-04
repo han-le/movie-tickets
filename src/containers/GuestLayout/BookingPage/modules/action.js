@@ -21,7 +21,31 @@ export const actAddGheApi = (id) => {
       });
   };
 };
-
+export const actBookGhe = (maLichChieu, danhSachVe, user) => {
+  let accessToken = JSON.parse(localStorage.getItem("UserData")).accessToken;
+  return (dispatch) => {
+    dispatch(actAddGheRequest());
+    Axios({
+      url: `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe`,
+      method: "POST",
+      data: {
+        maLichChieu,
+        danhSachVe,
+        taiKhoanNguoiDung: user,
+      },
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((result) => {
+        window.location.reload();
+      })
+      .catch((err) => {
+        // dispatch(actAddGheFailed(err));
+        console.log("fail ne");
+      });
+  };
+};
 export const actAddGheRequest = () => {
   return {
     type: GET_GHE_REQUEST,
